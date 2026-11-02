@@ -12,13 +12,16 @@ This file documents the mandatory operational principles and behavioral rules fo
 
 ### 2. Fast & Focused Execution
 
-- **Zero Distractions**: Do not waste time with unnecessary commentary or hesitation. Focus directly on implementing high-quality, production-ready code.
-- **Precision Modifications**: Update only the relevant files and preserve unrelated existing code and configurations.
+- **Instant Code Execution**: When a modification or fix is requested, make the changes immediately with minimal friction. Do not waste time with conversational filler, unnecessary preliminaries, or analysis delays.
+- **Strict File-Scoping Discipline**: Modify only the directly targeted and required files. Do not inspect, open, or crawl unrelated files across the codebase.
+- **Zero Distractions**: Focus directly on producing high-quality, production-grade code modifications rapidly.
+- **Precision Modifications**: Update strictly the relevant files and preserve unrelated existing code and configurations.
 
-### 3. No Automated Post-Execution Testing or Server Runs
+### 3. Strict Prohibitions: No Server Runs, No Manual Dev Testing, No Distracting Traversal
 
-- **Do Not Test Automatically**: After finishing code edits, **do not** run tests, start dev servers (`npm run dev`), launch preview servers, or run curl/puppeteer commands by yourself.
-- **User Verification**: The user will test and verify all functionality manually in their browser.
+- **Never Run Project Manually**: **Do not** start dev servers (`npm run dev`, `vite`, `yarn start`), preview servers, or launch background daemon processes unless explicitly commanded by the user.
+- **No Automated Post-Execution Testing**: Do not execute test suites, browser scripts (Puppeteer, Playwright), or cURL commands. The user will verify and test all code manually in their own browser environment.
+- **Zero Unprompted File Crawling**: Do not read or search across non-essential files when the target location or asset is known. Keep tool calls surgical, fast, and minimal.
 
 ### 4. UI & Architectural Requirements for JobStack
 
@@ -48,3 +51,19 @@ This file documents the mandatory operational principles and behavioral rules fo
   - Ensure key job discovery platforms are permanently maintained: **LinkedIn**, **Naukri.com**, and **Indeed**, alongside freelance marketplaces like Upwork, Toptal, and Fiverr.
 - **Visual Integrity & Resilient Logos**:
   - Provide high-quality SVG brand icons and fallbacks so third-party CDN rate-limiting or blocking never results in broken images or generic plain boxes.
+
+### 5. Code Integration Rules: Reusable Common Components & Constant-Time Logic
+
+- **Always Integrate Reusable Common Component-Based Code**:
+  - **Shared Primitives First**: Always utilize and extend shared components located in `src/components/common/` (e.g., `CategoryIcon`, `ToolBadge`, `JobStackLogo`, `ThemeToggle`) rather than implementing redundant one-off inline SVG icons, badge markups, or repeated styling blocks.
+  - **Single Responsibility & Modularity**: Encapsulate newly created UI abstractions into distinct, single-responsibility components with well-defined TypeScript interfaces (`interface ComponentProps`).
+  - **Uniform Design Tokens**: Reference root CSS design tokens (`var(--bg-primary)`, `var(--text-accent)`, etc.) across all components to ensure uniform theming, dark/light mode consistency, and effortless maintainability.
+  - **Zero Duplication**: Never copy-paste icon SVGs, color dictionaries, or layout wrappers across different views. If a visual or functional pattern is needed in multiple locations, abstract it into `src/components/common/` or a dedicated shared helper.
+
+- **Strict Constant-Time (O(1)) Logic & Computational Efficiency**:
+  - **O(1) Lookups Over Linear Scans**: Always use constant-time data structures—JavaScript objects (`Record<string, ...>`), `Map`, or `Set`—for lookups, category icon mapping, color schemes, badge determination, and key indexing. Never perform repeated linear array searches (`find()`, `filter()`, `indexOf()`) inside hot rendering loops.
+  - **Pre-Indexed Lookups for Large Datasets**: When navigating or accessing entities by ID or category, access them via indexed maps or dictionaries rather than iterating over full collections.
+  - **Avoid Nested Loops & Quadratic Complexity**: Ensure filtering, categorization, and sorting pipelines run in optimal linear time O(N) once per input change, never O(N²) or higher.
+  - **React Memoization & Stable References**: Use `useMemo` for derived lists, grouping dictionaries, and filtered datasets. Use `useCallback` for event handlers passed down to child components to prevent cascading re-renders.
+  - **Direct Constant-Time DOM Updates**: For critical global states (like theme switching or scroll locking), apply direct O(1) attribute manipulation on document roots (`document.documentElement.setAttribute('data-theme', theme)`) with zero layout thrashing.
+  - **Fast UI Response Times**: Keep UI interactions (search keystrokes, category switching, modal navigation) running at 60 FPS with instant sub-millisecond response times.

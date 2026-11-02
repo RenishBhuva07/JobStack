@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JobStack — Find Your Next Client or Job</title>
@@ -16,7 +17,24 @@
     content="The ultimate handpicked directory of tools that actually work for freelancers and job seekers." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#080c14" />
+  <meta name="theme-color" content="#080c14" id="theme-color-meta" />
+  <!-- Anti-FOUC Theme Initializer (Constant Time O(1)) -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('jobstack_theme');
+        var theme = saved;
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.getElementById('theme-color-meta');
+        if (meta) {
+          meta.setAttribute('content', theme === 'light' ? '#f8fafc' : '#080c14');
+        }
+      } catch (e) { }
+    })();
+  </script>
   <!-- Google Fonts preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

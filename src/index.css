@@ -1,22 +1,64 @@
 /* ============================================
-   GLOBAL CSS — JobStack Dark Mode Design System
+   GLOBAL CSS — JobStack Design System (Dark & Light)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
-/* ---- CSS Variables ---- */
+/* Biscotti Brand Font */
+@font-face {
+  font-family: "Biscotti";
+  src: url("./assets/fonts/Biscotti.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Biscotti";
+  src: url("./assets/fonts/Biscotti.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Biscotti";
+  src: url("./assets/fonts/Biscotti.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- CSS Variables: Dark Theme (Default) ---- */
 :root {
-  /* Colors */
+  /* Brand Typography */
+  --font-brand:
+    "Biscotti", "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Surface Colors */
   --bg-primary: #080c14;
   --bg-secondary: #0d1424;
   --bg-card: #111827;
   --bg-card-hover: #1a2438;
   --bg-glass: rgba(17, 24, 39, 0.6);
+  --bg-header-scrolled: rgba(8, 12, 20, 0.95);
+  --bg-toolbar-sticky: rgba(8, 12, 20, 0.98);
+  --bg-modal-overlay: rgba(5, 8, 15, 0.85);
+  --bg-modal-container: #0f172a;
+  --bg-modal-header: rgba(15, 23, 42, 0.6);
+  --bg-chip: rgba(255, 255, 255, 0.05);
+  --bg-chip-hover: rgba(255, 255, 255, 0.1);
+  --bg-input-focus: rgba(17, 24, 39, 0.95);
+  --code-kbd-bg: rgba(255, 255, 255, 0.08);
 
+  /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --border-card: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(99, 179, 237, 0.35);
 
+  /* Accents */
   --accent-blue: #3b82f6;
   --accent-blue-glow: rgba(59, 130, 246, 0.25);
   --accent-purple: #8b5cf6;
@@ -26,15 +68,55 @@
   --accent-amber: #f59e0b;
   --accent-rose: #f43f5e;
 
-  --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  --gradient-card: linear-gradient(145deg, rgba(59,130,246,0.05) 0%, rgba(139,92,246,0.05) 100%);
-  --gradient-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59,130,246,0.18) 0%, transparent 70%),
-                   radial-gradient(ellipse 50% 40% at 80% 20%, rgba(139,92,246,0.12) 0%, transparent 60%),
-                   #080c14;
+  /* Category Badges (Dark Theme) */
+  --cat-freelance-bg: rgba(59, 130, 246, 0.12);
+  --cat-freelance-text: #60a5fa;
+  --cat-freelance-border: rgba(59, 130, 246, 0.25);
 
+  --cat-jobs-bg: rgba(16, 185, 129, 0.12);
+  --cat-jobs-text: #34d399;
+  --cat-jobs-border: rgba(16, 185, 129, 0.25);
+
+  --cat-ai-bg: rgba(139, 92, 246, 0.12);
+  --cat-ai-text: #a78bfa;
+  --cat-ai-border: rgba(139, 92, 246, 0.25);
+
+  --cat-outreach-bg: rgba(245, 158, 11, 0.12);
+  --cat-outreach-text: #fbbf24;
+  --cat-outreach-border: rgba(245, 158, 11, 0.25);
+
+  --cat-network-bg: rgba(6, 182, 212, 0.12);
+  --cat-network-text: #22d3ee;
+  --cat-network-border: rgba(6, 182, 212, 0.25);
+
+  --cat-portfolio-bg: rgba(244, 63, 94, 0.12);
+  --cat-portfolio-text: #fb7185;
+  --cat-portfolio-border: rgba(244, 63, 94, 0.25);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-card: linear-gradient(
+    145deg,
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(139, 92, 246, 0.05) 100%
+  );
+  --gradient-hero:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(59, 130, 246, 0.18) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 20%,
+      rgba(139, 92, 246, 0.12) 0%,
+      transparent 60%
+    ),
+    #080c14;
+
+  /* Typography */
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-muted: #64748b;
   --text-accent: #60a5fa;
 
   /* Spacing */
@@ -49,12 +131,107 @@
 
   /* Shadows */
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(59,130,246,0.2);
+  --shadow-card-hover:
+    0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(59, 130, 246, 0.2);
   --shadow-glow-blue: 0 0 30px rgba(59, 130, 246, 0.15);
 }
 
+/* ---- CSS Variables: Light Theme ---- */
+:root[data-theme="light"] {
+  /* Surface Colors */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --bg-header-scrolled: rgba(255, 255, 255, 0.94);
+  --bg-toolbar-sticky: rgba(248, 250, 252, 0.98);
+  --bg-modal-overlay: rgba(15, 23, 42, 0.55);
+  --bg-modal-container: #ffffff;
+  --bg-modal-header: rgba(241, 245, 249, 0.9);
+  --bg-chip: rgba(15, 23, 42, 0.05);
+  --bg-chip-hover: rgba(15, 23, 42, 0.09);
+  --bg-input-focus: #ffffff;
+  --code-kbd-bg: rgba(15, 23, 42, 0.07);
+
+  /* Borders */
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-card: rgba(15, 23, 42, 0.1);
+  --border-hover: rgba(37, 99, 235, 0.35);
+
+  /* Accents */
+  --accent-blue: #2563eb;
+  --accent-blue-glow: rgba(37, 99, 235, 0.15);
+  --accent-purple: #7c3aed;
+  --accent-purple-glow: rgba(124, 58, 237, 0.12);
+  --accent-cyan: #0891b2;
+  --accent-emerald: #059669;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
+
+  /* Category Badges (Light Theme - Rich Accessible Colors) */
+  --cat-freelance-bg: #eff6ff;
+  --cat-freelance-text: #1d4ed8;
+  --cat-freelance-border: #bfdbfe;
+
+  --cat-jobs-bg: #ecfdf5;
+  --cat-jobs-text: #047857;
+  --cat-jobs-border: #a7f3d0;
+
+  --cat-ai-bg: #f5f3ff;
+  --cat-ai-text: #6d28d9;
+  --cat-ai-border: #ddd6fe;
+
+  --cat-outreach-bg: #fffbeb;
+  --cat-outreach-text: #b45309;
+  --cat-outreach-border: #fde68a;
+
+  --cat-network-bg: #ecfeff;
+  --cat-network-text: #0e7490;
+  --cat-network-border: #a5f3fc;
+
+  --cat-portfolio-bg: #fff1f2;
+  --cat-portfolio-text: #be123c;
+  --cat-portfolio-border: #fecdd3;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  --gradient-card: linear-gradient(
+    145deg,
+    rgba(37, 99, 235, 0.03) 0%,
+    rgba(124, 58, 237, 0.03) 100%
+  );
+  --gradient-hero:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(37, 99, 235, 0.08) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 80% 20%,
+      rgba(124, 58, 237, 0.06) 0%,
+      transparent 60%
+    ),
+    #f8fafc;
+
+  /* Typography */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-accent: #2563eb;
+
+  /* Shadows */
+  --shadow-card:
+    0 4px 20px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover:
+    0 12px 32px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.25);
+  --shadow-glow-blue: 0 0 30px rgba(37, 99, 235, 0.1);
+}
+
 /* ---- Base Reset ---- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -65,13 +242,20 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition:
+    background-color var(--transition-med),
+    color var(--transition-med);
 }
 
 a {
@@ -84,7 +268,8 @@ img {
   display: block;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -108,6 +293,67 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.font-brand {
+  font-family: var(--font-brand);
+}
+
+/* ---- Category Badges ---- */
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  transition: all var(--transition-fast);
+}
+
+.category-badge--freelance-platforms {
+  background: var(--cat-freelance-bg);
+  color: var(--cat-freelance-text);
+  border-color: var(--cat-freelance-border);
+}
+
+.category-badge--job-boards {
+  background: var(--cat-jobs-bg);
+  color: var(--cat-jobs-text);
+  border-color: var(--cat-jobs-border);
+}
+
+.category-badge--ai-powered {
+  background: var(--cat-ai-bg);
+  color: var(--cat-ai-text);
+  border-color: var(--cat-ai-border);
+}
+
+.category-badge--cold-outreach {
+  background: var(--cat-outreach-bg);
+  color: var(--cat-outreach-text);
+  border-color: var(--cat-outreach-border);
+}
+
+.category-badge--networking {
+  background: var(--cat-network-bg);
+  color: var(--cat-network-text);
+  border-color: var(--cat-network-border);
+}
+
+.category-badge--portfolio {
+  background: var(--cat-portfolio-bg);
+  color: var(--cat-portfolio-text);
+  border-color: var(--cat-portfolio-border);
+}
+
+.category-badge--default {
+  background: var(--bg-chip);
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
 }
 
 /* ---- Scrollbar ---- */
@@ -144,33 +390,59 @@ button {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes grid-line-move {
-  from { transform: translateY(0); }
-  to { transform: translateY(60px); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(60px);
+  }
 }
 
 /* ---- Responsive ---- */

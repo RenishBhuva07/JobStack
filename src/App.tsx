@@ -5,6 +5,7 @@ import Hero from "./components/Hero/Hero";
 import ToolGrid from "./components/ToolGrid/ToolGrid";
 import Footer from "./components/Footer/Footer";
 import AllToolsPage from "./components/AllToolsPage/AllToolsPage";
+import SubmitToolPage from "./components/SubmitToolPage/SubmitToolPage";
 import { ToolDetailModal } from "./components/ToolDetailModal/ToolDetailModal";
 import { CategoryIcon } from "./components/common/CategoryIcon";
 import toolsData from "./data/tools.json";
@@ -14,7 +15,9 @@ import "./App.css";
 const data = toolsData as ToolsData;
 
 function App() {
-  const [currentView, setCurrentView] = useState<"home" | "tools">("home");
+  const [currentView, setCurrentView] = useState<"home" | "tools" | "submit">(
+    "home",
+  );
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalTool, setActiveModalTool] = useState<Tool | null>(null);
 
@@ -22,11 +25,15 @@ function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (
-        hash.startsWith("#/tools") ||
-        hash === "#tools" ||
-        hash === "#categories"
-      ) {
+      if (hash.startsWith("#/submit") || hash === "#submit") {
+        setCurrentView("submit");
+      } else if (hash === "#categories" || hash === "#categories-preview") {
+        setCurrentView("home");
+        setTimeout(() => {
+          const el = document.getElementById("categories-preview");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else if (hash.startsWith("#/tools") || hash === "#tools") {
         setCurrentView("tools");
         if (hash.includes("cat=")) {
           const match = hash.match(/cat=([^&]+)/);
@@ -42,7 +49,7 @@ function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const navigateTo = (view: "home" | "tools", category = "All") => {
+  const navigateTo = (view: "home" | "tools" | "submit", category = "All") => {
     setCurrentView(view);
     setSelectedCategory(category);
     if (view === "tools") {
@@ -50,6 +57,9 @@ function App() {
         category !== "All"
           ? `#/tools?cat=${encodeURIComponent(category)}`
           : "#/tools";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (view === "submit") {
+      window.location.hash = "#/submit";
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       window.location.hash = "#/";
@@ -71,7 +81,14 @@ function App() {
               totalTools={data.tools.length}
               totalCategories={data.categories.length - 1}
               onBrowseTools={() => navigateTo("tools", "All")}
-              onViewCategories={() => navigateTo("tools", "All")}
+              onViewCategories={() => {
+                const el = document.getElementById("categories-preview");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  navigateTo("tools", "All");
+                }
+              }}
             />
 
             {/* Featured Tools Showcase */}
@@ -226,12 +243,13 @@ function App() {
                         listed yet, we'd love to hear about it.
                       </p>
                     </div>
-                    <a
-                      href="mailto:hello@jobstack.dev"
+                    <button
+                      type="button"
+                      onClick={() => navigateTo("submit")}
                       className="about-card__btn"
                       id="about-submit-btn"
                     >
-                      Submit a Tool
+                      <span>Submit a Tool</span>
                       <svg
                         width="16"
                         height="16"
@@ -242,13 +260,13 @@ function App() {
                       >
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
             </section>
           </>
-        ) : (
+        ) : currentView === "tools" ? (
           /* Dedicated All Tools View */
           <AllToolsPage
             tools={data.tools}
@@ -256,6 +274,12 @@ function App() {
             initialCategory={selectedCategory}
             onBackToHome={() => navigateTo("home")}
             onExploreTool={setActiveModalTool}
+          />
+        ) : (
+          /* Dedicated Tool Submission View */
+          <SubmitToolPage
+            categories={data.categories}
+            onNavigateToTools={() => navigateTo("tools")}
           />
         )}
       </main>

@@ -1,51 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36" fill="none">
   <defs>
-    <linearGradient id="favBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#0b1120" />
-      <stop offset="100%" stopColor="#030712" />
+    <!-- Light Squircle Background Gradient matching Navbar .jobstack-logo__icon-wrap -->
+    <linearGradient id="navCardBg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#ffffff" />
+      <stop offset="50%" stopColor="#eff6ff" />
+      <stop offset="100%" stopColor="#f5f3ff" />
     </linearGradient>
-    <linearGradient id="favBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
-      <stop offset="50%" stopColor="#6366f1" stopOpacity="0.6" />
-      <stop offset="100%" stopColor="#a855f7" stopOpacity="0.8" />
-    </linearGradient>
-    <linearGradient id="topPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <!-- Top Plate Face Gradient -->
+    <linearGradient id="jsTopGrad" x1="5" y1="3" x2="27" y2="15" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stopColor="#38bdf8" />
-      <stop offset="50%" stopColor="#3b82f6" />
+      <stop offset="55%" stopColor="#3b82f6" />
       <stop offset="100%" stopColor="#8b5cf6" />
     </linearGradient>
-    <linearGradient id="midPlate" x1="0%" y1="0%" x2="100%" y2="0%">
+
+    <!-- Top Plate Left Bevel Gradient -->
+    <linearGradient id="jsTopLeftBevel" x1="5" y1="9" x2="16" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#2563eb" />
+      <stop offset="100%" stopColor="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Top Plate Right Bevel Gradient -->
+    <linearGradient id="jsTopRightBevel" x1="16" y1="11" x2="27" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#7c3aed" />
+      <stop offset="100%" stopColor="#5b21b6" />
+    </linearGradient>
+
+    <!-- Middle Tier Stroke Gradient -->
+    <linearGradient id="jsMidGrad" x1="6" y1="16" x2="26" y2="21" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stopColor="#38bdf8" />
+      <stop offset="50%" stopColor="#60a5fa" />
       <stop offset="100%" stopColor="#a855f7" />
     </linearGradient>
-    <linearGradient id="botPlate" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stopColor="#6366f1" />
+
+    <!-- Bottom Tier Stroke Gradient -->
+    <linearGradient id="jsBotGrad" x1="6" y1="22" x2="26" y2="27" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#60a5fa" />
+      <stop offset="50%" stopColor="#818cf8" />
       <stop offset="100%" stopColor="#c084fc" />
     </linearGradient>
-    <filter id="favGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
   </defs>
 
-  <!-- Background Squircle with subtle gradient border -->
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#favBgGrad)" stroke="url(#favBorderGrad)" stroke-width="2" />
+  <!-- Navbar Matching Rounded Squircle Card -->
+  <rect
+    x="1"
+    y="1"
+    width="34"
+    height="34"
+    rx="10"
+    fill="url(#navCardBg)"
+    stroke="#bfdbfe"
+    stroke-width="1.2"
+  />
 
-  <!-- Ambient Glow Behind Stack -->
-  <ellipse cx="32" cy="33" rx="16" ry="9" fill="#3b82f6" opacity="0.25" filter="url(#favGlow)" />
+  <!-- 3D Stack Icon Exactly Sized and Centered inside Container -->
+  <g transform="translate(7, 7) scale(0.6875)">
+    <!-- Tier 3: Foundation Bottom Chevron -->
+    <path
+      d="M6 22.5 L16 27.5 L26 22.5"
+      stroke="url(#jsBotGrad)"
+      stroke-width="2.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
 
-  <!-- Layer 3 (Bottom Foundation) -->
-  <path d="M14 41.5 L32 49 L50 41.5" stroke="url(#botPlate)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Tier 2: Middle Acceleration Chevron -->
+    <path
+      d="M6 16.5 L16 21.5 L26 16.5"
+      stroke="url(#jsMidGrad)"
+      stroke-width="2.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
 
-  <!-- Layer 2 (Middle Shelf) -->
-  <path d="M14 33.5 L32 41 L50 33.5" stroke="url(#midPlate)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Tier 1: Bevel Sides -->
+    <path
+      d="M5.5 9.5 L16 14.8 L16 17 L5.5 11.7 Z"
+      fill="url(#jsTopLeftBevel)"
+    />
+    <path
+      d="M16 14.8 L26.5 9.5 L26.5 11.7 L16 17 Z"
+      fill="url(#jsTopRightBevel)"
+    />
 
-  <!-- Layer 1 (Top Hero Diamond Card) -->
-  <path d="M32 15 L48 22.5 L32 30 L16 22.5 Z" fill="url(#topPlate)" />
-  
-  <!-- Sleek Top Plate Highlight -->
-  <path d="M32 17 L44 22.5 L32 28 L20 22.5 Z" fill="#ffffff" opacity="0.22" />
-  
-  <!-- Subtle Center Core Accent -->
-  <circle cx="32" cy="22.5" r="2.2" fill="#ffffff" opacity="0.9" />
+    <!-- Tier 1: Summit Diamond Face -->
+    <path
+      d="M16 4.2 L26.5 9.5 L16 14.8 L5.5 9.5 Z"
+      fill="url(#jsTopGrad)"
+    />
+
+    <!-- Specular Highlight -->
+    <path
+      d="M6.5 9.5 L16 4.8 L25.5 9.5"
+      stroke="#ffffff"
+      stroke-width="0.8"
+      stroke-opacity="0.6"
+      stroke-linecap="round"
+    />
+
+    <!-- Spark Node -->
+    <circle cx="16" cy="9.5" r="1.8" fill="#ffffff" />
+    <circle cx="16" cy="9.5" r="3.4" fill="#38bdf8" fill-opacity="0.45" />
+  </g>
 </svg>

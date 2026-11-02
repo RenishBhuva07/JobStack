@@ -39,13 +39,23 @@ export default function AllToolsPage({
     setActiveCategory(initialCategory);
   }, [initialCategory]);
 
+  // Pre-indexed category counts for constant-time O(1) lookups
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: tools.length };
+    for (let i = 0; i < tools.length; i++) {
+      const cat = tools[i].category;
+      counts[cat] = (counts[cat] || 0) + 1;
+    }
+    return counts;
+  }, [tools]);
+
   // Only show categories that have at least 1 tool (avoids showing empty categories like "Networking 0")
   const availableCategories = useMemo(() => {
     return categories.filter((cat) => {
       if (cat === "All") return true;
-      return tools.some((t) => t.category === cat);
+      return (categoryCounts[cat] || 0) > 0;
     });
-  }, [categories, tools]);
+  }, [categories, categoryCounts]);
 
   // Filter tools based on search and category
   const filteredTools = useMemo(() => {
@@ -145,10 +155,7 @@ export default function AllToolsPage({
           {/* Inline Category Pills */}
           <div className="all-tools-page__category-tabs">
             {availableCategories.map((cat) => {
-              const count =
-                cat === "All"
-                  ? tools.length
-                  : tools.filter((t) => t.category === cat).length;
+              const count = categoryCounts[cat] || 0;
               return (
                 <button
                   key={cat}
