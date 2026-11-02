@@ -2,7 +2,7 @@
   position: sticky;
   top: 65px;
   z-index: 100;
-  background: rgba(8, 12, 20, 0.85);
+  background: var(--bg-toolbar-sticky);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
@@ -39,7 +39,7 @@
   border: 1px solid var(--border-card);
   border-radius: 12px;
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14.5px;
   transition: all var(--transition-fast);
   outline: none;
@@ -51,8 +51,8 @@
 
 .filterbar__search:focus {
   border-color: rgba(59, 130, 246, 0.5);
-  background: rgba(17, 24, 39, 0.9);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: var(--bg-input-focus);
+  box-shadow: 0 0 0 3px var(--accent-blue-glow);
 }
 
 .filterbar__clear {
@@ -70,7 +70,7 @@
 
 .filterbar__clear:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-chip-hover);
 }
 
 /* Categories */
@@ -98,7 +98,7 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-chip);
   border: 1px solid var(--border-subtle);
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -106,7 +106,7 @@
 
 .filterbar__cat-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--bg-chip-hover);
   border-color: var(--border-card);
 }
 
@@ -121,7 +121,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
+  background: currentColor;
   flex-shrink: 0;
 }
 

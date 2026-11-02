@@ -1,0 +1,104 @@
+/* ============================================
+   JobStack Brand Logo Component Styles
+   ============================================ */
+
+.jobstack-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+
+.jobstack-logo__icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.16) 0%,
+    rgba(139, 92, 246, 0.16) 100%
+  );
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
+  transition: all var(--transition-med);
+}
+
+:root[data-theme="light"] .jobstack-logo__icon-wrap {
+  background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+  border-color: #bfdbfe;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+.jobstack-brand-logo:hover .jobstack-logo__icon-wrap {
+  transform: translateY(-1px) scale(1.02);
+  border-color: var(--accent-blue);
+  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.35);
+}
+
+.jobstack-logo__text {
+  font-family: var(--font-brand);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.jobstack-logo__text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+/* Sizing Modifiers */
+.jobstack-brand-logo--sm {
+  gap: 8px;
+}
+.jobstack-brand-logo--sm .jobstack-logo__icon-wrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+.jobstack-brand-logo--sm .jobstack-logo__text {
+  font-size: 18px;
+  letter-spacing: -0.4px;
+}
+
+.jobstack-brand-logo--md {
+  gap: 10px;
+}
+.jobstack-brand-logo--md .jobstack-logo__icon-wrap {
+  width: 36px;
+  height: 36px;
+}
+.jobstack-brand-logo--md .jobstack-logo__text {
+  font-size: 22px;
+}
+
+.jobstack-brand-logo--lg {
+  gap: 12px;
+}
+.jobstack-brand-logo--lg .jobstack-logo__icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+.jobstack-brand-logo--lg .jobstack-logo__text {
+  font-size: 26px;
+  letter-spacing: -0.8px;
+}
+

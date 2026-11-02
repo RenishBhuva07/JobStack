@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 90px 0 40px;
+  padding: 80px 0 50px;
   background: var(--gradient-hero);
 }
 
@@ -24,13 +24,21 @@
     linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
   background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 40%,
+    transparent 100%
+  );
 }
 
 .hero__grid-radial {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgba(59, 130, 246, 0.12) 0%,
+    transparent 70%
+  );
 }
 
 /* Orbs */
@@ -45,7 +53,11 @@
 .hero__orb--1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.1) 0%,
+    transparent 70%
+  );
   top: -200px;
   left: -100px;
   animation-delay: 0s;
@@ -54,7 +66,11 @@
 .hero__orb--2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.08) 0%,
+    transparent 70%
+  );
   top: -100px;
   right: -100px;
   animation-delay: -3s;
@@ -63,7 +79,11 @@
 .hero__orb--3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.06) 0%,
+    transparent 70%
+  );
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -78,7 +98,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
   animation: fadeInUp 0.8s ease both;
 }
 
@@ -95,6 +114,7 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.01em;
+  margin-bottom: 20px;
   animation: fadeInUp 0.6s 0.1s both;
 }
 
@@ -109,22 +129,31 @@
 
 /* Title */
 .hero__title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(44px, 7vw, 80px);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(50px, 7.8vw, 94px);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -2px;
+  line-height: 1.08;
+  letter-spacing: -2.5px;
   color: var(--text-primary);
-  max-width: 800px;
+  max-width: 1400px;
+  width: 100%;
+  margin-bottom: 20px;
   animation: fadeInUp 0.7s 0.2s both;
+}
+
+@media (min-width: 768px) {
+  .hero__title {
+    white-space: nowrap;
+  }
 }
 
 /* Description */
 .hero__description {
   font-size: clamp(16px, 2vw, 19px);
   color: var(--text-secondary);
-  max-width: 560px;
+  max-width: 640px;
   line-height: 1.7;
+  margin-bottom: 32px;
   animation: fadeInUp 0.7s 0.3s both;
 }
 
@@ -132,9 +161,10 @@
 .hero__actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 42px;
   animation: fadeInUp 0.7s 0.4s both;
 }
 
@@ -153,24 +183,28 @@
 .hero__btn--primary {
   background: var(--gradient-brand);
   color: #fff;
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  box-shadow:
+    0 8px 24px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hero__btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+  box-shadow:
+    0 16px 40px rgba(59, 130, 246, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .hero__btn--secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-chip);
   color: var(--text-primary);
   border: 1px solid var(--border-card);
   backdrop-filter: blur(8px);
 }
 
 .hero__btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--bg-chip-hover);
+  border-color: var(--border-hover);
   transform: translateY(-2px);
 }
 
@@ -179,14 +213,20 @@
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 16px;
-  padding: 14px 28px;
+  padding: 16px 28px;
   backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
   animation: fadeInUp 0.7s 0.5s both;
   flex-wrap: wrap;
   justify-content: center;
+  transition: all var(--transition-med);
+}
+
+:root[data-theme="light"] .hero__stats {
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .hero__stat {
@@ -198,24 +238,25 @@
 }
 
 .hero__stat-value {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-heading);
   font-size: 26px;
   font-weight: 800;
   letter-spacing: -0.5px;
+  line-height: 1.1;
 }
 
 .hero__stat-label {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .hero__stat-divider {
   width: 1px;
   height: 36px;
-  background: var(--border-subtle);
+  background: var(--border-card);
 }
 
 /* Scroll indicator */
@@ -233,15 +274,37 @@
 .hero__scroll-line {
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(59, 130, 246, 0.5),
+    transparent
+  );
   animation: fadeIn 2s 1s ease both;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .hero {
-    padding: 100px 0 60px;
+    padding: 90px 0 50px;
     min-height: auto;
+  }
+
+  .hero__pill {
+    margin-bottom: 16px;
+  }
+
+  .hero__title {
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .hero__description {
+    margin-bottom: 24px;
+  }
+
+  .hero__actions {
+    margin-bottom: 32px;
   }
 
   .hero__stats {
@@ -255,10 +318,6 @@
 
   .hero__stat-divider {
     display: none;
-  }
-
-  .hero__title {
-    letter-spacing: -1px;
   }
 }
 
