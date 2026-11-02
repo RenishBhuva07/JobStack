@@ -29,7 +29,9 @@
 }
 
 .home-section-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -37,13 +39,18 @@
   color: var(--accent-blue);
   background: rgba(59, 130, 246, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 100px;
   margin-bottom: 12px;
 }
 
+.home-section-badge-icon {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
 .home-section-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 800;
   color: var(--text-primary);
@@ -86,7 +93,11 @@
 .home-more-cta-banner {
   margin-top: 48px;
   padding: 32px 36px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(139, 92, 246, 0.08) 100%
+  );
   border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 20px;
   display: flex;
@@ -97,7 +108,7 @@
 }
 
 .home-more-cta-text h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #fff;
@@ -111,6 +122,9 @@
 }
 
 .home-explore-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 12px 24px;
   border-radius: 12px;
   background: var(--gradient-brand);
@@ -168,8 +182,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  color: var(--accent-blue);
   flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.home-category-card:hover .home-category-icon-wrap {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #93c5fd;
+  transform: scale(1.05);
 }
 
 .home-category-info {
@@ -177,7 +199,7 @@
 }
 
 .home-category-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: var(--text-primary);
@@ -190,9 +212,13 @@
 }
 
 .home-category-arrow {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .home-category-card:hover .home-category-arrow {
@@ -229,7 +255,11 @@
 .about-card__orb--1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.08) 0%,
+    transparent 70%
+  );
   top: -150px;
   right: -100px;
 }
@@ -237,7 +267,11 @@
 .about-card__orb--2 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.06) 0%,
+    transparent 70%
+  );
   bottom: -100px;
   left: -50px;
 }
@@ -269,7 +303,7 @@
 }
 
 .about-card__title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(20px, 2.5vw, 26px);
   font-weight: 800;
   color: var(--text-primary);

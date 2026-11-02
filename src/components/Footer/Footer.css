@@ -14,7 +14,11 @@
   transform: translateX(-50%);
   width: 600px;
   height: 200px;
-  background: radial-gradient(ellipse, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse,
+    rgba(59, 130, 246, 0.07) 0%,
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -51,7 +55,7 @@
 }
 
 .footer__logo-text {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 19px;
   font-weight: 700;
   color: var(--text-primary);
@@ -71,13 +75,27 @@
 }
 
 .footer__badge {
-  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
   font-weight: 500;
-  padding: 4px 10px;
+  padding: 5px 11px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-subtle);
   border-radius: 100px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+}
+
+.footer__badge-icon {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.footer__heart {
+  display: inline-block;
+  vertical-align: -2px;
+  margin: 0 2px;
 }
 
 /* Nav */
@@ -92,7 +110,7 @@
 }
 
 .footer__nav-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: var(--text-secondary);

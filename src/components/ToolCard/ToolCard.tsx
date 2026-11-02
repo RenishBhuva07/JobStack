@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import type { Tool } from '../../types';
-import { BrandIcon } from './BrandLogos';
-import './ToolCard.css';
+import { useState } from "react";
+import type { Tool } from "../../types";
+import { BrandIcon } from "./BrandLogos";
+import { ToolBadge } from "../common/ToolBadge";
+import "./ToolCard.css";
 
 interface ToolCardProps {
   tool: Tool;
@@ -9,13 +10,40 @@ interface ToolCardProps {
   onExplore?: (tool: Tool) => void;
 }
 
-const categoryColors: Record<string, { bg: string; text: string; glow: string }> = {
-  'Freelance Platforms': { bg: 'rgba(59,130,246,0.12)', text: '#60a5fa', glow: 'rgba(59,130,246,0.2)' },
-  'Job Boards': { bg: 'rgba(16,185,129,0.12)', text: '#34d399', glow: 'rgba(16,185,129,0.2)' },
-  'AI-Powered': { bg: 'rgba(139,92,246,0.12)', text: '#a78bfa', glow: 'rgba(139,92,246,0.2)' },
-  'Cold Outreach': { bg: 'rgba(245,158,11,0.12)', text: '#fbbf24', glow: 'rgba(245,158,11,0.2)' },
-  'Networking': { bg: 'rgba(6,182,212,0.12)', text: '#22d3ee', glow: 'rgba(6,182,212,0.2)' },
-  'Portfolio': { bg: 'rgba(244,63,94,0.12)', text: '#fb7185', glow: 'rgba(244,63,94,0.2)' },
+const categoryColors: Record<
+  string,
+  { bg: string; text: string; glow: string }
+> = {
+  "Freelance Platforms": {
+    bg: "rgba(59,130,246,0.12)",
+    text: "#60a5fa",
+    glow: "rgba(59,130,246,0.2)",
+  },
+  "Job Boards": {
+    bg: "rgba(16,185,129,0.12)",
+    text: "#34d399",
+    glow: "rgba(16,185,129,0.2)",
+  },
+  "AI-Powered": {
+    bg: "rgba(139,92,246,0.12)",
+    text: "#a78bfa",
+    glow: "rgba(139,92,246,0.2)",
+  },
+  "Cold Outreach": {
+    bg: "rgba(245,158,11,0.12)",
+    text: "#fbbf24",
+    glow: "rgba(245,158,11,0.2)",
+  },
+  Networking: {
+    bg: "rgba(6,182,212,0.12)",
+    text: "#22d3ee",
+    glow: "rgba(6,182,212,0.2)",
+  },
+  Portfolio: {
+    bg: "rgba(244,63,94,0.12)",
+    text: "#fb7185",
+    glow: "rgba(244,63,94,0.2)",
+  },
 };
 
 function StarRating({ rating }: { rating: number }) {
@@ -27,7 +55,13 @@ function StarRating({ rating }: { rating: number }) {
           width="12"
           height="12"
           viewBox="0 0 24 24"
-          fill={star <= Math.floor(rating) ? '#f59e0b' : star - 0.5 <= rating ? 'url(#halfStar)' : 'none'}
+          fill={
+            star <= Math.floor(rating)
+              ? "#f59e0b"
+              : star - 0.5 <= rating
+                ? "url(#halfStar)"
+                : "none"
+          }
           stroke="#f59e0b"
           strokeWidth="1.5"
           className="tool-card__star"
@@ -49,20 +83,22 @@ function StarRating({ rating }: { rating: number }) {
 export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
   const [imgError, setImgError] = useState(false);
   const colors = categoryColors[tool.category] || {
-    bg: 'rgba(99,102,241,0.12)',
-    text: '#818cf8',
-    glow: 'rgba(99,102,241,0.2)',
+    bg: "rgba(99,102,241,0.12)",
+    text: "#818cf8",
+    glow: "rgba(99,102,241,0.2)",
   };
 
   return (
     <article
-      className={`tool-card ${tool.featured ? 'tool-card--featured' : ''}`}
+      className={`tool-card ${tool.featured ? "tool-card--featured" : ""}`}
       id={`tool-card-${tool.id}`}
       style={{ animationDelay: `${index * 0.04}s` }}
       onClick={() => onExplore?.(tool)}
     >
       {/* Featured glow border */}
-      {tool.featured && <div className="tool-card__featured-border" aria-hidden="true" />}
+      {tool.featured && (
+        <div className="tool-card__featured-border" aria-hidden="true" />
+      )}
 
       {/* Header */}
       <div className="tool-card__header">
@@ -83,9 +119,7 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
 
         {/* Badge */}
         {tool.badge && (
-          <div className="tool-card__badge" id={`badge-${tool.id}`}>
-            {tool.badge}
-          </div>
+          <ToolBadge badge={tool.badge} id={`badge-${tool.id}`} size="sm" />
         )}
       </div>
 
@@ -124,7 +158,14 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
         {/* Pricing + Actions */}
         <div className="tool-card__actions">
           <span className="tool-card__pricing">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
             {tool.pricing}
@@ -153,7 +194,14 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
               onClick={(e) => e.stopPropagation()}
             >
               Visit
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />

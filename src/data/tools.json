@@ -21,8 +21,13 @@
       "pricing": "Free + Commission",
       "rating": 4.5,
       "featured": true,
-      "badge": "🔥 Most Popular",
-      "features": ["Direct project bidding", "Enterprise client access", "Escrow payment protection", "Global talent pool"]
+      "badge": "Most Popular",
+      "features": [
+        "Direct project bidding",
+        "Enterprise client access",
+        "Escrow payment protection",
+        "Global talent pool"
+      ]
     },
     {
       "id": 2,
@@ -36,8 +41,13 @@
       "pricing": "Free (Elite)",
       "rating": 4.7,
       "featured": true,
-      "badge": "⭐ Elite",
-      "features": ["Top 3% vetting standard", "Dedicated matchmakers", "Silicon Valley rates", "Zero bidding wars"]
+      "badge": "Elite",
+      "features": [
+        "Top 3% vetting standard",
+        "Dedicated matchmakers",
+        "Silicon Valley rates",
+        "Zero bidding wars"
+      ]
     },
     {
       "id": 3,
@@ -52,7 +62,12 @@
       "rating": 4.3,
       "featured": false,
       "badge": "",
-      "features": ["Inbound gig orders", "Fiverr Pro verification", "Packaged pricing tiers", "Instant order chat"]
+      "features": [
+        "Inbound gig orders",
+        "Fiverr Pro verification",
+        "Packaged pricing tiers",
+        "Instant order chat"
+      ]
     },
     {
       "id": 4,
@@ -66,8 +81,13 @@
       "pricing": "Free / Premium",
       "rating": 4.7,
       "featured": true,
-      "badge": "💼 Must-Have",
-      "features": ["Direct recruiter inbounds", "Easy Apply functionality", "Salary and company insights", "Automated job alerts"]
+      "badge": "Must-Have",
+      "features": [
+        "Direct recruiter inbounds",
+        "Easy Apply functionality",
+        "Salary and company insights",
+        "Automated job alerts"
+      ]
     },
     {
       "id": 5,
@@ -77,12 +97,22 @@
       "url": "https://www.indeed.com",
       "logo": "https://logo.clearbit.com/indeed.com",
       "category": "Job Boards",
-      "tags": ["Global Reach", "Salary Insights", "Company Reviews", "Easy Apply"],
+      "tags": [
+        "Global Reach",
+        "Salary Insights",
+        "Company Reviews",
+        "Easy Apply"
+      ],
       "pricing": "100% Free",
       "rating": 4.6,
       "featured": true,
-      "badge": "🌍 Global #1",
-      "features": ["Millions of verified listings", "Resume builder & upload", "Company salary comparisons", "Instant mobile notifications"]
+      "badge": "Global #1",
+      "features": [
+        "Millions of verified listings",
+        "Resume builder & upload",
+        "Company salary comparisons",
+        "Instant mobile notifications"
+      ]
     },
     {
       "id": 6,
@@ -96,8 +126,13 @@
       "pricing": "Free / FastForward",
       "rating": 4.5,
       "featured": true,
-      "badge": "🇮🇳 Top Job Portal",
-      "features": ["Direct recruiter calls", "Naukri FastForward boosts", "Custom skill search filters", "Daily interview alerts"]
+      "badge": "Top Job Portal",
+      "features": [
+        "Direct recruiter calls",
+        "Naukri FastForward boosts",
+        "Custom skill search filters",
+        "Daily interview alerts"
+      ]
     },
     {
       "id": 7,
@@ -112,7 +147,12 @@
       "rating": 4.4,
       "featured": false,
       "badge": "",
-      "features": ["100% remote positions", "No location restrictions", "Vetted tech companies", "Weekly job digest"]
+      "features": [
+        "100% remote positions",
+        "No location restrictions",
+        "Vetted tech companies",
+        "Weekly job digest"
+      ]
     },
     {
       "id": 8,
@@ -126,8 +166,13 @@
       "pricing": "Free",
       "rating": 4.2,
       "featured": false,
-      "badge": "✨ No Commission",
-      "features": ["0% commission fees", "Built-in contracts & invoicing", "Modern visual portfolio", "Direct client messaging"]
+      "badge": "No Commission",
+      "features": [
+        "0% commission fees",
+        "Built-in contracts & invoicing",
+        "Modern visual portfolio",
+        "Direct client messaging"
+      ]
     },
     {
       "id": 9,
@@ -142,7 +187,12 @@
       "rating": 4.5,
       "featured": false,
       "badge": "",
-      "features": ["Strict developer screening", "Guaranteed 48hr client match", "Consistent hourly billing", "Dedicated project support"]
+      "features": [
+        "Strict developer screening",
+        "Guaranteed 48hr client match",
+        "Consistent hourly billing",
+        "Dedicated project support"
+      ]
     },
     {
       "id": 10,
@@ -156,8 +206,13 @@
       "pricing": "Free",
       "rating": 4.4,
       "featured": true,
-      "badge": "🚀 Dev Focused",
-      "features": ["Verified engineering roles", "Silicon Valley salary rates", "Full-time & contract gigs", "Developer career coaching"]
+      "badge": "Dev Focused",
+      "features": [
+        "Verified engineering roles",
+        "Silicon Valley salary rates",
+        "Full-time & contract gigs",
+        "Developer career coaching"
+      ]
     },
     {
       "id": 11,
@@ -172,7 +227,12 @@
       "rating": 4.3,
       "featured": false,
       "badge": "",
-      "features": ["Transparent salary ranges", "AI personalization match", "Strict quality curation", "Fast application flow"]
+      "features": [
+        "Transparent salary ranges",
+        "AI personalization match",
+        "Strict quality curation",
+        "Fast application flow"
+      ]
     },
     {
       "id": 12,
@@ -186,8 +246,13 @@
       "pricing": "Free for Talent",
       "rating": 4.1,
       "featured": false,
-      "badge": "🌐 Web3",
-      "features": ["100% earnings kept", "Enterprise Fortune 100 clients", "Community token governance", "Direct recruiter relationships"]
+      "badge": "Web3",
+      "features": [
+        "100% earnings kept",
+        "Enterprise Fortune 100 clients",
+        "Community token governance",
+        "Direct recruiter relationships"
+      ]
     },
     {
       "id": 13,
@@ -202,7 +267,12 @@
       "rating": 4.4,
       "featured": false,
       "badge": "",
-      "features": ["Adobe Creative Cloud integration", "Direct creative job board", "Case study presentation", "Global client reach"]
+      "features": [
+        "Adobe Creative Cloud integration",
+        "Direct creative job board",
+        "Case study presentation",
+        "Global client reach"
+      ]
     },
     {
       "id": 14,
@@ -216,8 +286,13 @@
       "pricing": "Free / Pro",
       "rating": 4.5,
       "featured": true,
-      "badge": "🎨 Designer Pick",
-      "features": ["Exclusive design briefs", "Direct message client hiring", "Curated visual showcases", "Freelance project leads"]
+      "badge": "Designer Pick",
+      "features": [
+        "Exclusive design briefs",
+        "Direct message client hiring",
+        "Curated visual showcases",
+        "Freelance project leads"
+      ]
     },
     {
       "id": 15,
@@ -232,7 +307,12 @@
       "rating": 4.5,
       "featured": false,
       "badge": "",
-      "features": ["Domain email discovery", "Email deliverability verify", "Cold outreach campaigns", "Chrome extension support"]
+      "features": [
+        "Domain email discovery",
+        "Email deliverability verify",
+        "Cold outreach campaigns",
+        "Chrome extension support"
+      ]
     },
     {
       "id": 16,
@@ -246,8 +326,13 @@
       "pricing": "Free / Paid",
       "rating": 4.6,
       "featured": true,
-      "badge": "🤖 AI-Powered",
-      "features": ["275M+ B2B contact database", "Automated email sequences", "LinkedIn prospect export", "Enriched buyer intent data"]
+      "badge": "AI-Powered",
+      "features": [
+        "275M+ B2B contact database",
+        "Automated email sequences",
+        "LinkedIn prospect export",
+        "Enriched buyer intent data"
+      ]
     },
     {
       "id": 17,
@@ -262,7 +347,12 @@
       "rating": 4.2,
       "featured": false,
       "badge": "",
-      "features": ["AI template auto-fill", "Cross-tab browser automation", "Instant text expansion", "Proposal customization"]
+      "features": [
+        "AI template auto-fill",
+        "Cross-tab browser automation",
+        "Instant text expansion",
+        "Proposal customization"
+      ]
     },
     {
       "id": 18,
@@ -276,8 +366,13 @@
       "pricing": "Free",
       "rating": 4.8,
       "featured": true,
-      "badge": "👨‍💻 Dev Essential",
-      "features": ["Public code repository portfolio", "Activity contribution heatmaps", "Profile README showcases", "Global developer network"]
+      "badge": "Dev Essential",
+      "features": [
+        "Public code repository portfolio",
+        "Activity contribution heatmaps",
+        "Profile README showcases",
+        "Global developer network"
+      ]
     }
   ]
 }

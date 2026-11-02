@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
-import type { Tool } from '../../types';
-import { BrandIcon } from '../ToolCard/BrandLogos';
-import './ToolDetailModal.css';
+import React, { useEffect } from "react";
+import { Star, ArrowLeft, ArrowRight } from "lucide-react";
+import type { Tool } from "../../types";
+import { BrandIcon } from "../ToolCard/BrandLogos";
+import { ToolBadge } from "../common/ToolBadge";
+import "./ToolDetailModal.css";
 
 interface ToolDetailModalProps {
   tool: Tool | null;
@@ -41,27 +43,35 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === "ArrowLeft") {
         handlePrev();
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         handleNext();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
     // Prevent background scrolling when modal is open
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
     };
   }, [currentIndex, total]);
 
   return (
-    <div className="tool-modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="tool-modal-container" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="tool-modal-overlay"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        className="tool-modal-container"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Top Control Bar */}
         <div className="tool-modal-header">
           <div className="tool-modal-stepper">
@@ -71,7 +81,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               title="Previous Tool (Left Arrow)"
               aria-label="Previous Tool"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M15 18l-6-6 6-6" />
               </svg>
               <span>Prev</span>
@@ -88,7 +105,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               aria-label="Next Tool"
             >
               <span>Next</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
@@ -100,7 +124,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             aria-label="Close dialog"
             title="Close (Esc)"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
@@ -116,7 +147,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             <div className="tool-modal-titles">
               <div className="tool-modal-name-row">
                 <h2 className="tool-modal-title">{tool.name}</h2>
-                {tool.badge && <span className="tool-modal-badge">{tool.badge}</span>}
+                {tool.badge && <ToolBadge badge={tool.badge} size="md" />}
               </div>
               <p className="tool-modal-tagline">{tool.tagline}</p>
             </div>
@@ -126,19 +157,29 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
           <div className="tool-modal-meta-row">
             <div className="tool-modal-meta-item">
               <span className="tool-modal-meta-label">Category</span>
-              <span className="tool-modal-meta-value category-pill">{tool.category}</span>
+              <span className="tool-modal-meta-value category-pill">
+                {tool.category}
+              </span>
             </div>
 
             <div className="tool-modal-meta-item">
               <span className="tool-modal-meta-label">Community Rating</span>
               <span className="tool-modal-meta-value rating-pill">
-                ⭐ {tool.rating} / 5.0
+                <Star
+                  size={13}
+                  fill="currentColor"
+                  strokeWidth={0}
+                  className="modal-rating-star"
+                />
+                {tool.rating} / 5.0
               </span>
             </div>
 
             <div className="tool-modal-meta-item">
               <span className="tool-modal-meta-label">Pricing Model</span>
-              <span className="tool-modal-meta-value pricing-pill">{tool.pricing}</span>
+              <span className="tool-modal-meta-value pricing-pill">
+                {tool.pricing}
+              </span>
             </div>
           </div>
 
@@ -151,11 +192,20 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
           {/* Key Features */}
           {tool.features && tool.features.length > 0 && (
             <div className="tool-modal-section">
-              <h4 className="tool-modal-section-title">Key Advantages & Capabilities</h4>
+              <h4 className="tool-modal-section-title">
+                Key Advantages & Capabilities
+              </h4>
               <ul className="tool-modal-features-list">
                 {tool.features.map((feat, idx) => (
                   <li key={idx} className="tool-modal-feature-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#10b981"
+                      strokeWidth="2.5"
+                    >
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     <span>{feat}</span>
@@ -181,7 +231,19 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
         {/* Modal Footer */}
         <div className="tool-modal-footer">
           <div className="tool-modal-keyboard-hint">
-            <kbd>←</kbd> <kbd>→</kbd> navigate one by one &bull; <kbd>Esc</kbd> to close
+            <kbd>
+              <ArrowLeft
+                size={10}
+                style={{ display: "inline", verticalAlign: "-1px" }}
+              />
+            </kbd>{" "}
+            <kbd>
+              <ArrowRight
+                size={10}
+                style={{ display: "inline", verticalAlign: "-1px" }}
+              />
+            </kbd>{" "}
+            navigate one by one &bull; <kbd>Esc</kbd> to close
           </div>
 
           <a
@@ -191,7 +253,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             className="tool-modal-visit-btn"
           >
             <span>Visit {tool.name}</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
               <polyline points="15 3 21 3 21 9" />
               <line x1="10" y1="14" x2="21" y2="3" />
@@ -202,4 +271,3 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
     </div>
   );
 };
-

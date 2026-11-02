@@ -10,7 +10,11 @@
 /* Compact Page Header */
 .all-tools-page__hero {
   padding: 80px 0 18px;
-  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59, 130, 246, 0.09) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    rgba(59, 130, 246, 0.09) 0%,
+    transparent 70%
+  );
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -30,7 +34,7 @@
 }
 
 .all-tools-page__title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(26px, 3.2vw, 34px);
   font-weight: 800;
   color: var(--text-primary);
@@ -39,7 +43,7 @@
 }
 
 .all-tools-page__curated-subtitle {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 600;
   color: #94a3b8;
@@ -107,14 +111,18 @@
 
 .all-tools-page__search-clear {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
   color: var(--text-muted);
-  padding: 2px 4px;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .all-tools-page__search-clear:hover {
@@ -169,7 +177,10 @@
 }
 
 .all-tools-page__tab-icon {
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .all-tools-page__tab-badge {
@@ -261,11 +272,20 @@
 }
 
 .all-tools-page__cat-icon {
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--accent-blue);
+  flex-shrink: 0;
 }
 
 .all-tools-page__cat-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--text-primary);
@@ -293,11 +313,14 @@
 }
 
 .all-tools-page__cat-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11.5px;
   font-weight: 600;
   color: var(--accent-blue);
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
   background: rgba(59, 130, 246, 0.06);
   border: 1px solid rgba(59, 130, 246, 0.15);
@@ -345,7 +368,16 @@
 }
 
 .all-tools-page__empty-icon {
-  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--accent-blue);
+  margin-bottom: 4px;
 }
 
 .all-tools-page__reset-btn {
