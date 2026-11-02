@@ -1,3 +1,4 @@
+import { Tag } from "lucide-react";
 import type { Tool } from "../../types";
 import { BrandIcon } from "./BrandLogos";
 import { ToolBadge } from "../common/ToolBadge";
@@ -9,82 +10,80 @@ interface ToolCardProps {
   onExplore?: (tool: Tool) => void;
 }
 
-const categoryColors: Record<
-  string,
-  { bg: string; text: string; glow: string }
-> = {
-  "Freelance Platforms": {
-    bg: "rgba(59,130,246,0.12)",
-    text: "#60a5fa",
-    glow: "rgba(59,130,246,0.2)",
-  },
-  "Job Boards": {
-    bg: "rgba(16,185,129,0.12)",
-    text: "#34d399",
-    glow: "rgba(16,185,129,0.2)",
-  },
-  "AI-Powered": {
-    bg: "rgba(139,92,246,0.12)",
-    text: "#a78bfa",
-    glow: "rgba(139,92,246,0.2)",
-  },
-  "Cold Outreach": {
-    bg: "rgba(245,158,11,0.12)",
-    text: "#fbbf24",
-    glow: "rgba(245,158,11,0.2)",
-  },
-  Networking: {
-    bg: "rgba(6,182,212,0.12)",
-    text: "#22d3ee",
-    glow: "rgba(6,182,212,0.2)",
-  },
-  Portfolio: {
-    bg: "rgba(244,63,94,0.12)",
-    text: "#fb7185",
-    glow: "rgba(244,63,94,0.2)",
-  },
+const categoryClassMap: Record<string, string> = {
+  "Freelance Platforms": "category-badge--freelance-platforms",
+  "Job Boards": "category-badge--job-boards",
+  "AI-Powered": "category-badge--ai-powered",
+  "Cold Outreach": "category-badge--cold-outreach",
+  Networking: "category-badge--networking",
+  Portfolio: "category-badge--portfolio",
 };
 
+export function getCategoryBadgeClass(category: string): string {
+  return categoryClassMap[category] || "category-badge--default";
+}
+
 function StarRating({ rating }: { rating: number }) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating - fullStars >= 0.5;
+
   return (
     <div className="tool-card__stars" aria-label={`Rating: ${rating} out of 5`}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <svg
-          key={star}
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          fill={
-            star <= Math.floor(rating)
-              ? "#f59e0b"
-              : star - 0.5 <= rating
-                ? "url(#halfStar)"
-                : "none"
-          }
-          stroke="#f59e0b"
-          strokeWidth="1.5"
-          className="tool-card__star"
-        >
-          <defs>
-            <linearGradient id="halfStar">
-              <stop offset="50%" stopColor="#f59e0b" />
-              <stop offset="50%" stopColor="transparent" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
+      {[1, 2, 3, 4, 5].map((star) => {
+        const isFull = star <= fullStars;
+        const isHalf = star === fullStars + 1 && hasHalfStar;
+
+        return (
+          <span key={star} className="tool-card__star-wrap" aria-hidden="true">
+            {isFull ? (
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="#f59e0b"
+                stroke="#f59e0b"
+                strokeWidth="1.5"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            ) : isHalf ? (
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#f59e0b"
+                strokeWidth="1.5"
+              >
+                <path
+                  fill="#f59e0b"
+                  d="M12 2v15.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            ) : (
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="tool-card__star-empty"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            )}
+          </span>
+        );
+      })}
       <span className="tool-card__rating-num">{rating}</span>
     </div>
   );
 }
 
 export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
-  const colors = categoryColors[tool.category] || {
-    bg: "rgba(99,102,241,0.12)",
-    text: "#818cf8",
-    glow: "rgba(99,102,241,0.2)",
-  };
+  const categoryBadgeClass = getCategoryBadgeClass(tool.category);
 
   return (
     <article
@@ -93,25 +92,23 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
       style={{ animationDelay: `${index * 0.04}s` }}
       onClick={() => onExplore?.(tool)}
     >
-      {/* Featured glow border */}
+      {/* Featured top gradient accent bar */}
       {tool.featured && (
-        <div className="tool-card__featured-border" aria-hidden="true" />
+        <div className="tool-card__featured-accent" aria-hidden="true" />
       )}
 
-      {/* Header */}
+      {/* Header: Logo and Badges */}
       <div className="tool-card__header">
-        {/* Logo */}
         <div className="tool-card__logo-wrap">
-          <BrandIcon name={tool.name} size={48} />
+          <BrandIcon name={tool.name} url={tool.url} size={48} />
         </div>
 
-        {/* Badge */}
         {tool.badge && (
           <ToolBadge badge={tool.badge} id={`badge-${tool.id}`} size="sm" />
         )}
       </div>
 
-      {/* Body */}
+      {/* Body: Title, Tagline, Description & Tags */}
       <div className="tool-card__body">
         <div className="tool-card__title-row">
           <h3 className="tool-card__name">{tool.name}</h3>
@@ -120,7 +117,6 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
         <p className="tool-card__tagline">{tool.tagline}</p>
         <p className="tool-card__description">{tool.description}</p>
 
-        {/* Tags */}
         <div className="tool-card__tags">
           {tool.tags.map((tag) => (
             <span key={tag} className="tool-card__tag">
@@ -130,65 +126,51 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Footer: Category Badge, Rating, Pricing & Actions */}
       <div className="tool-card__footer" onClick={(e) => e.stopPropagation()}>
-        {/* Category + Rating */}
         <div className="tool-card__meta">
-          <span
-            className="tool-card__category"
-            style={{ background: colors.bg, color: colors.text }}
-          >
+          <span className={`category-badge ${categoryBadgeClass}`}>
             {tool.category}
           </span>
           <StarRating rating={tool.rating} />
         </div>
 
-        {/* Pricing + Actions */}
         <div className="tool-card__actions">
-          <span className="tool-card__pricing">
-            <svg
-              width="13"
-              height="13"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </svg>
-            {tool.pricing}
+          <span
+            className="tool-card__pricing"
+            title={`Pricing: ${tool.pricing}`}
+          >
+            <Tag size={12} strokeWidth={2.2} />
+            <span>{tool.pricing}</span>
           </span>
 
           <div className="tool-card__btn-group">
             <button
               type="button"
               className="tool-card__explore-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                onExplore?.(tool);
-              }}
-              aria-label={`Explore ${tool.name} details`}
+              onClick={() => onExplore?.(tool)}
+              title={`Explore details for ${tool.name}`}
+              aria-label={`Explore ${tool.name}`}
             >
               Explore
             </button>
-
             <a
               href={tool.url}
               target="_blank"
               rel="noopener noreferrer"
               className="tool-card__visit-btn"
-              id={`visit-${tool.id}`}
+              title={`Visit official ${tool.name} website`}
               aria-label={`Visit ${tool.name}`}
-              onClick={(e) => e.stopPropagation()}
             >
-              Visit
+              <span>Visit</span>
               <svg
-                width="13"
-                height="13"
+                width="11"
+                height="11"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.5"
+                aria-hidden="true"
               >
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                 <polyline points="15 3 21 3 21 9" />

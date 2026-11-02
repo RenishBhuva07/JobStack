@@ -1,13 +1,5 @@
 {
-  "categories": [
-    "All",
-    "Freelance Platforms",
-    "Job Boards",
-    "AI-Powered",
-    "Cold Outreach",
-    "Networking",
-    "Portfolio"
-  ],
+  "categories": ["All", "Job Boards", "Freelance Platforms", "Portfolio"],
   "tools": [
     {
       "id": 1,
@@ -296,82 +288,333 @@
     },
     {
       "id": 15,
-      "name": "Hunter.io",
-      "tagline": "Find professional email addresses instantly",
-      "description": "Find verified email addresses for any company. Perfect for cold outreach — search by domain, verify emails, and run email campaigns.",
-      "url": "https://hunter.io",
+      "name": "Remote OK",
+      "tagline": "Leader in remote tech and digital nomad jobs",
+      "description": "One of the most visited remote job boards in the world, trusted by millions of remote workers and digital nomads for tech, design, marketing, and management positions worldwide.",
+      "url": "https://remoteok.com",
       "logo": "",
-      "category": "Cold Outreach",
-      "tags": ["Email Finding", "Lead Gen", "Outreach"],
-      "pricing": "Free / Paid",
-      "rating": 4.5,
-      "featured": false,
-      "badge": "",
+      "category": "Job Boards",
+      "tags": ["Remote", "Tech", "Global", "Nomad"],
+      "pricing": "100% Free for Seekers",
+      "rating": 4.6,
+      "featured": true,
+      "badge": "Remote Leader",
       "features": [
-        "Domain email discovery",
-        "Email deliverability verify",
-        "Cold outreach campaigns",
-        "Chrome extension support"
+        "Direct company application links",
+        "Transparent salary statistics",
+        "Digital nomad & timezone filters",
+        "Real-time remote job alerts"
       ]
     },
     {
       "id": 16,
-      "name": "Apollo.io",
-      "tagline": "AI-powered sales intelligence platform",
-      "description": "Apollo gives you access to 275M+ contacts, AI-powered email sequences, and enriched company data to supercharge your outbound client acquisition.",
-      "url": "https://www.apollo.io",
+      "name": "Wellfound",
+      "tagline": "Where startups and job seekers connect directly",
+      "description": "Formerly AngelList Talent, Wellfound is the premier startup hiring platform. Connect directly with founders and hiring managers with zero third-party recruiter spam and full salary transparency.",
+      "url": "https://wellfound.com",
       "logo": "",
-      "category": "Cold Outreach",
-      "tags": ["Lead Gen", "AI", "Sales"],
-      "pricing": "Free / Paid",
-      "rating": 4.6,
+      "category": "Job Boards",
+      "tags": ["Startups", "Equity", "Tech Jobs", "Direct Apply"],
+      "pricing": "100% Free for Candidates",
+      "rating": 4.8,
       "featured": true,
-      "badge": "AI-Powered",
+      "badge": "Top Startup Jobs",
       "features": [
-        "275M+ B2B contact database",
-        "Automated email sequences",
-        "LinkedIn prospect export",
-        "Enriched buyer intent data"
+        "Direct founder & hiring manager outreach",
+        "Transparent salary and equity packages",
+        "130,000+ tech and startup positions",
+        "Zero agency recruiters or middleman noise"
       ]
     },
     {
       "id": 17,
-      "name": "Magical",
-      "tagline": "AI writing assistant for outreach",
-      "description": "Magical uses AI to auto-fill repetitive messages and personalize outreach at scale. Perfect for freelancers sending dozens of cold proposals.",
-      "url": "https://www.getmagical.com",
+      "name": "Y Combinator",
+      "tagline": "Get hired by top YC-funded startups with one profile",
+      "description": "The official job board for Y Combinator startups. Apply to hundreds of fast-growing, top-tier startups (from seed to hyper-growth scaleups) with a single common profile.",
+      "url": "https://www.workatastartup.com",
       "logo": "",
-      "category": "AI-Powered",
-      "tags": ["AI", "Productivity", "Outreach"],
-      "pricing": "Free / Pro",
-      "rating": 4.2,
-      "featured": false,
-      "badge": "",
+      "category": "Job Boards",
+      "tags": ["Y Combinator", "Startups", "High Growth", "Direct to Founders"],
+      "pricing": "100% Free",
+      "rating": 4.9,
+      "featured": true,
+      "badge": "YC Backed",
       "features": [
-        "AI template auto-fill",
-        "Cross-tab browser automation",
-        "Instant text expansion",
-        "Proposal customization"
+        "Single application for hundreds of YC startups",
+        "Direct founder screening and reviews",
+        "Vetted seed to Series A+ companies",
+        "Exclusive YC talent directory invitation"
       ]
     },
     {
       "id": 18,
-      "name": "GitHub",
-      "tagline": "Your code is your portfolio",
-      "description": "A strong GitHub profile attracts clients and employers. Open source contributions, pinned repos, and a polished README make you stand out.",
-      "url": "https://github.com",
+      "name": "FlexJobs",
+      "tagline": "Hand-screened remote, hybrid & flexible job directory",
+      "description": "The leading subscription job portal where every single job listing is hand-screened and verified by real researchers to guarantee zero scams, junk, or fake listings.",
+      "url": "https://www.flexjobs.com",
       "logo": "",
-      "category": "Portfolio",
-      "tags": ["Dev", "Open Source", "Portfolio"],
-      "pricing": "Free",
+      "category": "Job Boards",
+      "tags": ["Vetted", "Scam-Free", "Remote", "Flexible"],
+      "pricing": "Paid Subscription",
+      "rating": 4.5,
+      "featured": true,
+      "badge": "100% Vetted",
+      "features": [
+        "Every listing hand-vetted by researchers",
+        "100% scam-free and ad-free experience",
+        "Career coaching & resume review discounts",
+        "Over 50+ career fields and categories"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Virtual Vocations",
+      "tagline": "Hand-researched telecommuting & remote career database",
+      "description": "Dedicated exclusively to legitimate telecommute jobs, complete with pre-screened employer profiles, remote company directories, and telecommute courses.",
+      "url": "https://www.virtualvocations.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Telecommute", "Remote", "Vetted", "Home-Based"],
+      "pricing": "Free / Paid Member",
+      "rating": 4.3,
+      "featured": false,
+      "badge": "",
+      "features": [
+        "Staff-researched telecommuting roles",
+        "Comprehensive remote company directory",
+        "Telecommute transition e-courses",
+        "Customized daily job alerts"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Remotive",
+      "tagline": "Hand-curated remote tech & knowledge worker jobs",
+      "description": "A top curated remote job board for developers, customer success, QA, design, and marketing professionals. Features transparent salaries and an active global community.",
+      "url": "https://remotive.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Tech", "Remote", "Community", "Global"],
+      "pricing": "Free for Job Seekers",
+      "rating": 4.4,
+      "featured": false,
+      "badge": "",
+      "features": [
+        "Strictly curated remote tech jobs",
+        "Active global remote Slack community",
+        "Country and timezone compatibility filters",
+        "Direct company application forms"
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Working Nomads",
+      "tagline": "Remote jobs for digital nomads on the move",
+      "description": "Curated lists of remote jobs for professionals who want to work from anywhere around the globe, with strong focus on engineering, systems admin, copywriting, and design.",
+      "url": "https://www.workingnomads.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Digital Nomad", "Anywhere", "Remote", "Dev & Design"],
+      "pricing": "100% Free for Candidates",
+      "rating": 4.3,
+      "featured": false,
+      "badge": "",
+      "features": [
+        "Curated daily and weekly job batches",
+        "Global 'work from anywhere' filters",
+        "Categorized by development, design, and management",
+        "Direct apply to hiring companies"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Himalayas",
+      "tagline": "Modern remote job board with salary transparency & company insights",
+      "description": "A beautifully designed remote job search experience featuring 100% upfront salary ranges, tech stack breakdowns, timezone overlap filters, and deep-dive company culture profiles.",
+      "url": "https://himalayas.app",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Salary Transparent", "Tech Stack", "Remote", "Modern"],
+      "pricing": "100% Free",
+      "rating": 4.7,
+      "featured": true,
+      "badge": "Modern Pick",
+      "features": [
+        "100% salary transparency on all postings",
+        "Filter by exact timezone overlap and region",
+        "Detailed company tech stack breakdowns",
+        "In-depth company culture profiles"
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Dynamite Jobs",
+      "tagline": "Vetted remote jobs from remote-first companies",
+      "description": "Curated remote work opportunities from verified, remote-first businesses. Emphasizes genuine remote culture, asynchronous communication, fair compensation, and zero scam listings.",
+      "url": "https://dynamitejobs.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Remote-First", "Vetted", "Async", "Startups"],
+      "pricing": "100% Free for Candidates",
+      "rating": 4.4,
+      "featured": false,
+      "badge": "",
+      "features": [
+        "100% remote-first companies only",
+        "Pre-screened hiring managers and roles",
+        "Timezone overlap and visa requirement filters",
+        "Free candidate talent directory profile"
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Jobspresso",
+      "tagline": "Expertly curated remote careers in tech, marketing & more",
+      "description": "High-quality remote jobs at leading startups and established companies. All listings are manually reviewed to ensure genuine remote arrangements with great perks.",
+      "url": "https://jobspresso.co",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Curated", "Remote", "Tech", "Marketing"],
+      "pricing": "100% Free for Candidates",
+      "rating": 4.3,
+      "featured": false,
+      "badge": "",
+      "features": [
+        "Manually reviewed and verified postings",
+        "Resume submission to employer talent pool",
+        "Instant daily email alerts for new roles",
+        "Startup through enterprise opportunities"
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Lenny's Jobs",
+      "tagline": "Premier job board for product builders, growth & engineering",
+      "description": "Curated job board by Lenny Rachitsky for builders, product managers, engineers, and growth leaders. Features verified roles at top tech companies and the exclusive 'Lenny 100'.",
+      "url": "https://www.lennysjobs.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Product Management", "Growth", "Tech Builders", "High Growth"],
+      "pricing": "100% Free for Candidates",
+      "rating": 4.9,
+      "featured": true,
+      "badge": "Top Product Jobs",
+      "features": [
+        "Curated specifically for builders, PMs & tech leaders",
+        "Features top companies in the 'Lenny 100'",
+        "High-tier tech compensation and equity",
+        "Direct connection to hiring tech leaders"
+      ]
+    },
+    {
+      "id": 26,
+      "name": "a16z Job Board",
+      "tagline": "Over 18,000+ open jobs across 690+ a16z portfolio companies",
+      "description": "The official portfolio jobs board for Andreessen Horowitz. Explore verified opportunities across premier VC-backed companies in AI, crypto, bio, fintech, enterprise, and consumer tech.",
+      "url": "https://jobs.a16z.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["VC Portfolio", "AI & Crypto", "Top Startups", "High Equity"],
+      "pricing": "100% Free",
       "rating": 4.8,
       "featured": true,
-      "badge": "Dev Essential",
+      "badge": "VC Top Tier",
       "features": [
-        "Public code repository portfolio",
-        "Activity contribution heatmaps",
-        "Profile README showcases",
-        "Global developer network"
+        "18,000+ active roles across 690+ portfolio companies",
+        "Filter by funding stage, role, and focus area",
+        "Access to the a16z Talent Network",
+        "Work at top tier Andreessen Horowitz ventures"
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Unstop",
+      "tagline": "Early talent platform, hiring hackathons & tech jobs",
+      "description": "Connecting students, freshers, and professionals with top companies through hiring challenges, hackathons, quizzes, internships, and full-time tech opportunities.",
+      "url": "https://unstop.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": [
+        "Early Career",
+        "Hackathons",
+        "Internships",
+        "Competitions",
+        "Tech Hiring"
+      ],
+      "pricing": "100% Free",
+      "rating": 4.6,
+      "featured": true,
+      "badge": "Top for Students",
+      "features": [
+        "Direct hiring challenges & hackathons",
+        "Paid internships and fresher job tracks",
+        "Skill assessments and practice quizzes",
+        "Campus and lateral recruitment drives"
+      ]
+    },
+    {
+      "id": 28,
+      "name": "CutShort",
+      "tagline": "AI-powered tech hiring platform & direct recruiter chat",
+      "description": "Connect directly with hiring managers, founders, and tech recruiters at high-growth startups and tech enterprises with verified salary insights and fast response rates.",
+      "url": "https://cutshort.io",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Tech Jobs", "Startups", "Direct Recruiter Chat", "AI Matching"],
+      "pricing": "100% Free",
+      "rating": 4.5,
+      "featured": true,
+      "badge": "High Response",
+      "features": [
+        "Direct chat with hiring decision-makers",
+        "Transparent salary and compensation bands",
+        "AI matching based on verified skills",
+        "High-priority verified candidate inbox"
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Uplers",
+      "tagline": "Vetted remote talent network for global companies",
+      "description": "Pre-vetted talent network matching skilled software engineers, marketers, and designers with US, UK, and global employers for full-time long-term remote roles.",
+      "url": "https://www.uplers.com",
+      "logo": "",
+      "category": "Freelance Platforms",
+      "tags": [
+        "Remote Talent",
+        "Vetted Network",
+        "Global Contracts",
+        "Tech & Marketing"
+      ],
+      "pricing": "Free for Talent",
+      "rating": 4.6,
+      "featured": false,
+      "badge": "Pre-Vetted",
+      "features": [
+        "5-stage rigorous skill & English vetting",
+        "Full-time remote global employment contracts",
+        "Dedicated talent success advocate",
+        "Assured on-time international payouts"
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Remote.io",
+      "tagline": "Curated remote jobs for tech, design, and product teams",
+      "description": "A hand-picked remote job board dedicated to distributed companies and remote-first roles with clean filters and verified legitimate employer listings.",
+      "url": "https://remote.io",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Remote Only", "Global", "Verified Listings", "Tech & Support"],
+      "pricing": "100% Free",
+      "rating": 4.4,
+      "featured": false,
+      "badge": "Remote Only",
+      "features": [
+        "100% remote positions worldwide",
+        "Verified and scam-free company postings",
+        "Clear timezone and regional eligibility tags",
+        "Daily alerts for new remote openings"
       ]
     }
   ]

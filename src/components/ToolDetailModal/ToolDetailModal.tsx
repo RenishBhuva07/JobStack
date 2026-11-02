@@ -141,7 +141,7 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
         <div className="tool-modal-body">
           <div className="tool-modal-identity">
             <div className="tool-modal-logo">
-              <BrandIcon name={tool.name} size={56} />
+              <BrandIcon name={tool.name} url={tool.url} size={56} />
             </div>
 
             <div className="tool-modal-titles">

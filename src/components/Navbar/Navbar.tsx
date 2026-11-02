@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import { JobStackIcon } from "../common/JobStackLogo";
+import { JobStackLogo } from "../common/JobStackLogo";
+import { ThemeToggle } from "../common/ThemeToggle";
 import "./Navbar.css";
 
 interface NavbarProps {
-  currentView: "home" | "tools";
-  onNavigate: (view: "home" | "tools", category?: string) => void;
+  currentView: "home" | "tools" | "submit";
+  onNavigate: (view: "home" | "tools" | "submit", category?: string) => void;
 }
 
 export default function Navbar({ currentView, onNavigate }: NavbarProps) {
@@ -18,7 +19,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (view: "home" | "tools", hash?: string) => {
+  const handleNavClick = (view: "home" | "tools" | "submit", hash?: string) => {
     setMenuOpen(false);
     onNavigate(view);
     if (hash) {
@@ -33,19 +34,11 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
     <nav id="navbar" className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="container navbar__inner">
         {/* Logo */}
-        <button
-          className="navbar__logo"
+        <JobStackLogo
+          size="md"
           id="nav-logo"
           onClick={() => handleNavClick("home")}
-          aria-label="JobStack Home"
-        >
-          <div className="navbar__logo-icon">
-            <JobStackIcon size={22} />
-          </div>
-          <span className="navbar__logo-text">
-            Job<span className="gradient-text">Stack</span>
-          </span>
-        </button>
+        />
 
         {/* Desktop Nav */}
         <ul className="navbar__links" id="nav-links">
@@ -53,6 +46,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
             <button
               className={`navbar__link ${currentView === "home" ? "active" : ""}`}
               onClick={() => handleNavClick("home")}
+              aria-current={currentView === "home" ? "page" : undefined}
             >
               Home
             </button>
@@ -62,17 +56,9 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
               className={`navbar__link ${currentView === "tools" ? "active" : ""}`}
               id="nav-tools"
               onClick={() => handleNavClick("tools")}
+              aria-current={currentView === "tools" ? "page" : undefined}
             >
               Browse All Tools
-            </button>
-          </li>
-          <li>
-            <button
-              className="navbar__link"
-              id="nav-categories"
-              onClick={() => handleNavClick("tools")}
-            >
-              Categories
             </button>
           </li>
           <li>
@@ -87,6 +73,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
         </ul>
 
         <div className="navbar__actions">
+          <ThemeToggle id="nav-theme-toggle" />
           <button
             className="navbar__cta"
             id="nav-cta"
@@ -103,6 +90,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
           id="nav-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span />
           <span />
@@ -113,12 +101,24 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="navbar__mobile-menu" id="mobile-menu">
-          <button onClick={() => handleNavClick("home")}>Home</button>
-          <button onClick={() => handleNavClick("tools")}>
+          <button
+            className={currentView === "home" ? "active" : ""}
+            onClick={() => handleNavClick("home")}
+            aria-current={currentView === "home" ? "page" : undefined}
+          >
+            Home
+          </button>
+          <button
+            className={currentView === "tools" ? "active" : ""}
+            onClick={() => handleNavClick("tools")}
+            aria-current={currentView === "tools" ? "page" : undefined}
+          >
             Browse All Tools
           </button>
-          <button onClick={() => handleNavClick("tools")}>Categories</button>
           <button onClick={() => handleNavClick("home", "about")}>About</button>
+          <div className="navbar__mobile-theme">
+            <ThemeToggle showLabel id="mobile-nav-theme-toggle" />
+          </div>
         </div>
       )}
     </nav>
