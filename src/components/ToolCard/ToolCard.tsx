@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Tool } from "../../types";
 import { BrandIcon } from "./BrandLogos";
 import { ToolBadge } from "../common/ToolBadge";
@@ -81,7 +80,6 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
-  const [imgError, setImgError] = useState(false);
   const colors = categoryColors[tool.category] || {
     bg: "rgba(99,102,241,0.12)",
     text: "#818cf8",
@@ -104,17 +102,7 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
       <div className="tool-card__header">
         {/* Logo */}
         <div className="tool-card__logo-wrap">
-          {!imgError ? (
-            <img
-              src={tool.logo}
-              alt={`${tool.name} logo`}
-              className="tool-card__logo"
-              onError={() => setImgError(true)}
-              loading="lazy"
-            />
-          ) : (
-            <BrandIcon name={tool.name} size={48} />
-          )}
+          <BrandIcon name={tool.name} size={48} />
         </div>
 
         {/* Badge */}

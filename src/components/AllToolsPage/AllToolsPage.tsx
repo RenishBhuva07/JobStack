@@ -98,8 +98,8 @@ export default function AllToolsPage({
             <h1 className="all-tools-page__title">
               Explore All <span className="gradient-text">Job Tools</span>
             </h1>
-            <span className="all-tools-page__curated-subtitle">
-              <strong>{tools.length} tools</strong> curated across{" "}
+            <span className="all-tools-page__stats-subtitle">
+              <strong>{tools.length} tools</strong> handpicked across{" "}
               <strong>{availableCategories.length - 1} categories</strong>
             </span>
           </div>

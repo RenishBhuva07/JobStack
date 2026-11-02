@@ -5,25 +5,29 @@ This file documents the mandatory operational principles and behavioral rules fo
 ---
 
 ### 1. Analysis & Planning First
+
 - **Identify & List Issues First**: Always start by reviewing UI, snapshots, and code to list out all identified issues, discrepancies, and feedback before making any changes.
 - **Formulate a Step-by-Step Plan**: Provide a concise, actionable plan detailing how each issue will be addressed and resolved.
 - **Re-evaluate Before Execution**: Review the plan critically, prune unnecessary or redundant elements, and verify layout efficiency before touching code.
 
 ### 2. Fast & Focused Execution
+
 - **Zero Distractions**: Do not waste time with unnecessary commentary or hesitation. Focus directly on implementing high-quality, production-ready code.
 - **Precision Modifications**: Update only the relevant files and preserve unrelated existing code and configurations.
 
 ### 3. No Automated Post-Execution Testing or Server Runs
+
 - **Do Not Test Automatically**: After finishing code edits, **do not** run tests, start dev servers (`npm run dev`), launch preview servers, or run curl/puppeteer commands by yourself.
 - **User Verification**: The user will test and verify all functionality manually in their browser.
 
 ### 4. UI & Architectural Requirements for JobStack
+
 - **Dedicated Directory Page for Tools**:
   - Avoid stacking multiple thick sticky bars on the landing page that compress the viewport.
   - Provide a dedicated `/tools` page so users have maximum vertical screen real estate to explore platforms comfortably.
 - **Header Title & Right-Side Stats Placement**:
   - Do not clutter directory views with redundant breadcrumb rows (e.g. `Back to Home / All Tools`).
-  - Display the directory stats (e.g. `18 tools curated across 5 categories`) horizontally on the **right side** of the main heading (`Explore All Job Tools`) in a single flex row (`justify-content: space-between`), with prominent bold typography.
+  - Display the directory stats (e.g. `18 tools handpicked across 5 categories`) horizontally on the **right side** of the main heading (`Explore All Job Tools`) in a single flex row (`justify-content: space-between`), with prominent bold typography.
 - **Zero-Gap Sticky Header & Toolbar Alignment**:
   - Fixed navigation bars must maintain a stable fixed height (e.g., `height: 64px`), avoiding height or padding shifts on scroll.
   - Sticky toolbars directly below the header must lock flush (`top: 64px`) with **zero gap**, preventing underlying cards or background from showing through during scroll.

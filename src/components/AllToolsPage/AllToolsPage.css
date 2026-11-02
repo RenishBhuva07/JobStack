@@ -42,7 +42,7 @@
   line-height: 1.15;
 }
 
-.all-tools-page__curated-subtitle {
+.all-tools-page__stats-subtitle {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 600;
@@ -51,7 +51,7 @@
   white-space: nowrap;
 }
 
-.all-tools-page__curated-subtitle strong {
+.all-tools-page__stats-subtitle strong {
   color: #60a5fa;
   font-weight: 700;
 }
