@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { X, Search, ArrowRight } from "lucide-react";
 import type { Tool } from "../../types";
 import ToolGrid from "../ToolGrid/ToolGrid";
@@ -34,10 +34,19 @@ export default function AllToolsPage({
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"sections" | "grid">("sections");
 
-  // Synchronize initial category changes if passed from outside
-  useEffect(() => {
+  const handleSelectCategory = (cat: string) => {
+    setActiveCategory(cat);
+    setSearchQuery("");
+    const targetUrl =
+      cat !== "All" ? `/tools?cat=${encodeURIComponent(cat)}` : "/tools";
+    window.history.replaceState(null, "", targetUrl);
+  };
+
+  const [prevInitialCategory, setPrevInitialCategory] = useState(initialCategory);
+  if (prevInitialCategory !== initialCategory) {
+    setPrevInitialCategory(initialCategory);
     setActiveCategory(initialCategory);
-  }, [initialCategory]);
+  }
 
   // Pre-indexed category counts for constant-time O(1) lookups
   const categoryCounts = useMemo(() => {
@@ -160,10 +169,7 @@ export default function AllToolsPage({
                 <button
                   key={cat}
                   className={`all-tools-page__cat-tab ${activeCategory === cat ? "active" : ""}`}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setSearchQuery("");
-                  }}
+                  onClick={() => handleSelectCategory(cat)}
                 >
                   <span className="all-tools-page__tab-icon">
                     <CategoryIcon category={cat} size={13} />
@@ -237,10 +243,7 @@ export default function AllToolsPage({
             </p>
             <button
               className="all-tools-page__reset-btn"
-              onClick={() => {
-                setActiveCategory("All");
-                setSearchQuery("");
-              }}
+              onClick={() => handleSelectCategory("All")}
             >
               Reset Filters
             </button>
@@ -282,7 +285,7 @@ export default function AllToolsPage({
 
                     <button
                       className="all-tools-page__cat-filter-btn"
-                      onClick={() => setActiveCategory(categoryName)}
+                      onClick={() => handleSelectCategory(categoryName)}
                       title={`Filter to only ${categoryName}`}
                     >
                       <span>Filter {categoryName}</span>
@@ -316,10 +319,7 @@ export default function AllToolsPage({
 
               <button
                 className="all-tools-page__cat-filter-btn"
-                onClick={() => {
-                  setActiveCategory("All");
-                  setSearchQuery("");
-                }}
+                onClick={() => handleSelectCategory("All")}
                 title="View All Categories"
               >
                 <span>View All Categories</span>

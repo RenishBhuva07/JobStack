@@ -14,71 +14,79 @@ import "./App.css";
 
 const data = toolsData as ToolsData;
 
+type View = "home" | "tools" | "submit";
+
+function parseLocation(): { view: View; category: string } {
+  if (typeof window === "undefined") return { view: "home", category: "All" };
+
+  const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const search = new URLSearchParams(window.location.search);
+  const hash = window.location.hash;
+
+  if (path === "/tools" || hash.startsWith("#/tools")) {
+    const cat = search.get("cat") || hash.match(/cat=([^&]+)/)?.[1];
+    return { view: "tools", category: cat ? decodeURIComponent(cat) : "All" };
+  }
+  if (path === "/submit" || hash.startsWith("#/submit")) {
+    return { view: "submit", category: "All" };
+  }
+  return { view: "home", category: "All" };
+}
+
+function getRouteUrl(view: View, category = "All"): string {
+  if (view === "tools") {
+    return category !== "All"
+      ? `/tools?cat=${encodeURIComponent(category)}`
+      : "/tools";
+  }
+  return view === "submit" ? "/submit" : "/";
+}
+
 function App() {
-  const [currentView, setCurrentView] = useState<"home" | "tools" | "submit">(
-    "home",
-  );
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [{ view, category }, setRoute] = useState(parseLocation);
   const [activeModalTool, setActiveModalTool] = useState<Tool | null>(null);
 
   const handleCloseModal = useCallback(() => {
     setActiveModalTool(null);
   }, []);
 
-  // Sync hash routing on mount and hashchange
+  // Sync route on browser Back/Forward (popstate) & clean legacy hash URLs
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith("#/submit") || hash === "#submit") {
-        setCurrentView("submit");
-      } else if (hash === "#categories" || hash === "#categories-preview") {
-        setCurrentView("home");
-        setTimeout(() => {
-          const el = document.getElementById("categories-preview");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      } else if (hash.startsWith("#/tools") || hash === "#tools") {
-        setCurrentView("tools");
-        if (hash.includes("cat=")) {
-          const match = hash.match(/cat=([^&]+)/);
-          if (match) setSelectedCategory(decodeURIComponent(match[1]));
-        }
-      } else {
-        setCurrentView("home");
-      }
-    };
+    if (window.location.hash.startsWith("#/")) {
+      const current = parseLocation();
+      window.history.replaceState(
+        null,
+        "",
+        getRouteUrl(current.view, current.category),
+      );
+    }
 
-    handleHashChange();
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    const onPopState = () => setRoute(parseLocation());
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
-  const navigateTo = (view: "home" | "tools" | "submit", category = "All") => {
-    setCurrentView(view);
-    setSelectedCategory(category);
-    if (view === "tools") {
-      window.location.hash =
-        category !== "All"
-          ? `#/tools?cat=${encodeURIComponent(category)}`
-          : "#/tools";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (view === "submit") {
-      window.location.hash = "#/submit";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.location.hash = "#/";
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  const navigateTo = useCallback((newView: View, newCategory = "All") => {
+    const targetUrl = getRouteUrl(newView, newCategory);
+    const currentUrl =
+      (window.location.pathname.replace(/\/+$/, "") || "/") +
+      window.location.search;
+
+    if (currentUrl !== targetUrl) {
+      window.history.pushState(null, "", targetUrl);
     }
-  };
+    setRoute({ view: newView, category: newCategory });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const featuredTools = data.tools.filter((t) => t.featured).slice(0, 6);
 
   return (
     <div className="app">
-      <Navbar currentView={currentView} onNavigate={navigateTo} />
+      <Navbar currentView={view} onNavigate={navigateTo} />
 
       <main id="main-content">
-        {currentView === "home" ? (
+        {view === "home" ? (
           <>
             {/* Hero Section */}
             <Hero
@@ -270,12 +278,12 @@ function App() {
               </div>
             </section>
           </>
-        ) : currentView === "tools" ? (
+        ) : view === "tools" ? (
           /* Dedicated All Tools View */
           <AllToolsPage
             tools={data.tools}
             categories={data.categories}
-            initialCategory={selectedCategory}
+            initialCategory={category}
             onBackToHome={() => navigateTo("home")}
             onExploreTool={setActiveModalTool}
           />
