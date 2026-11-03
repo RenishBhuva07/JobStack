@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import type { Tool } from "../../types";
 import { BrandIcon } from "../ToolCard/BrandLogos";
@@ -18,30 +18,48 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
   onClose,
   onSelectTool,
 }) => {
-  if (!tool) return null;
-
-  const currentIndex = toolsList.findIndex((t) => t.id === tool.id);
+  const isOpen = Boolean(tool);
   const total = toolsList.length;
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
+    if (!tool || total === 0) return;
+    const currentIndex = toolsList.findIndex((t) => t.id === tool.id);
     if (currentIndex > 0) {
       onSelectTool(toolsList[currentIndex - 1]);
     } else {
       // Loop to end
       onSelectTool(toolsList[total - 1]);
     }
-  };
+  }, [tool, total, toolsList, onSelectTool]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
+    if (!tool || total === 0) return;
+    const currentIndex = toolsList.findIndex((t) => t.id === tool.id);
     if (currentIndex < total - 1) {
       onSelectTool(toolsList[currentIndex + 1]);
     } else {
       // Loop to start
       onSelectTool(toolsList[0]);
     }
-  };
+  }, [tool, total, toolsList, onSelectTool]);
 
+  // Lock background scrolling while modal is open, and restore when closed/unmounted
   useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow === "hidden" ? "" : previousOverflow;
+    };
+  }, [isOpen]);
+
+  // Handle keyboard navigation (Escape to close, Left/Right arrows to step)
+  useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
@@ -53,13 +71,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    // Prevent background scrolling when modal is open
-    document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
     };
-  }, [currentIndex, total]);
+  }, [isOpen, onClose, handlePrev, handleNext]);
+
+  if (!tool) return null;
+
+  const currentIndex = toolsList.findIndex((t) => t.id === tool.id);
 
   return (
     <div

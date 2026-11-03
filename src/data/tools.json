@@ -616,6 +616,106 @@
         "Clear timezone and regional eligibility tags",
         "Daily alerts for new remote openings"
       ]
+    },
+    {
+      "id": 31,
+      "name": "ZipRecruiter",
+      "tagline": "AI-driven smart job matching and one-click applications",
+      "description": "A leading AI-powered employment marketplace connecting millions of active job seekers with top employers through smart matching technology, curated recommendations by AI recruiter Phil, and streamlined 1-click applications.",
+      "url": "https://www.ziprecruiter.in/",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": [
+        "AI Matching",
+        "1-Click Apply",
+        "Smart Alerts",
+        "Enterprise & SMB"
+      ],
+      "pricing": "Free for Job Seekers",
+      "rating": 4.7,
+      "featured": true,
+      "badge": "AI Matchmaker",
+      "features": [
+        "AI personal recruiter Phil that proactively pitches you to employers",
+        "Instant 1-Click Apply across thousands of verified hiring companies",
+        "Real-time application status tracking and interview invitations",
+        "Personalized salary estimates and career progression insights"
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Welcome to the Jungle",
+      "tagline": "Explore authentic company cultures and high-growth careers",
+      "description": "A culture-first recruitment and employer branding platform showcasing behind-the-scenes office tours, transparent salary benchmarks, video interviews with teams, and curated tech & creative opportunities.",
+      "url": "https://www.welcometothejungle.com/en/jobs",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": [
+        "Company Culture",
+        "Tech & Creative",
+        "Salary Transparency",
+        "Otta Powered"
+      ],
+      "pricing": "100% Free",
+      "rating": 4.8,
+      "featured": true,
+      "badge": "Culture First",
+      "features": [
+        "Immersive company showcases with video tours and team interviews",
+        "Clear upfront salary ranges, contract types, and flexible work policies",
+        "Transparent interview roadmap detailing every evaluation stage",
+        "Curated tech, product, design, and startup ecosystem openings"
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Glassdoor",
+      "tagline": "Search jobs with transparent employee reviews and salary insights",
+      "description": "The world's leading community for workplace transparency, combining an extensive global job search engine with millions of anonymous company reviews, salary breakdowns, CEO approval ratings, and real interview questions.",
+      "url": "https://www.glassdoor.co.in/index.htm",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": [
+        "Company Reviews",
+        "Salary Insights",
+        "Interview Prep",
+        "Global Jobs"
+      ],
+      "pricing": "Free with Community Sharing",
+      "rating": 4.6,
+      "featured": false,
+      "badge": "Community Vetted",
+      "features": [
+        "Millions of candid employee reviews and workplace culture ratings",
+        "Detailed compensation breakdowns and salary comparison benchmarks",
+        "Real interview questions and difficulty ratings shared by candidates",
+        "Personalized job alerts with company review overlays"
+      ]
+    },
+    {
+      "id": 34,
+      "name": "HiringCafe",
+      "tagline": "AI-powered job discovery straight from employer career sites",
+      "description": "A modern, clutter-free job search engine that indexes openings directly from corporate ATS platforms (Greenhouse, Lever, Workday) with zero recruiter spam, ghost jobs, or sponsored garbage.",
+      "url": "https://hiringcafe.com/",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": [
+        "Direct Sourcing",
+        "No Recruiter Spam",
+        "AI Search",
+        "ATS Direct"
+      ],
+      "pricing": "100% Free",
+      "rating": 4.9,
+      "featured": true,
+      "badge": "Zero Spam",
+      "features": [
+        "Direct indexing from verified company ATS platforms with no middlemen",
+        "Ultra-granular filtering by strict salary minimums, remote tiers, and tech stack",
+        "Conversational natural-language AI search and Talent Agent matching",
+        "Anonymous reverse recruiting talent network where employers apply to you"
+      ]
     }
   ]
 }

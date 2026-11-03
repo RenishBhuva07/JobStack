@@ -44,6 +44,11 @@ const KNOWN_PORTAL_URLS: Record<string, string> = {
   uplers: "https://www.uplers.com",
   "remote.io": "https://remote.io",
   remoteio: "https://remote.io",
+  ziprecruiter: "https://www.ziprecruiter.com",
+  "welcome to the jungle": "https://www.welcometothejungle.com",
+  welcometothejungle: "https://www.welcometothejungle.com",
+  glassdoor: "https://www.glassdoor.com",
+  hiringcafe: "https://hiringcafe.com",
 };
 
 /**

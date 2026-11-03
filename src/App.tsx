@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Sparkles, Layers, ArrowRight } from "lucide-react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -20,6 +20,10 @@ function App() {
   );
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalTool, setActiveModalTool] = useState<Tool | null>(null);
+
+  const handleCloseModal = useCallback(() => {
+    setActiveModalTool(null);
+  }, []);
 
   // Sync hash routing on mount and hashchange
   useEffect(() => {
@@ -287,12 +291,14 @@ function App() {
       <Footer totalTools={data.tools.length} onNavigate={navigateTo} />
 
       {/* Global Interactive One-by-One Detail Modal */}
-      <ToolDetailModal
-        tool={activeModalTool}
-        toolsList={data.tools}
-        onClose={() => setActiveModalTool(null)}
-        onSelectTool={setActiveModalTool}
-      />
+      {activeModalTool && (
+        <ToolDetailModal
+          tool={activeModalTool}
+          toolsList={data.tools}
+          onClose={handleCloseModal}
+          onSelectTool={setActiveModalTool}
+        />
+      )}
     </div>
   );
 }

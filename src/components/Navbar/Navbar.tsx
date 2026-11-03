@@ -58,7 +58,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
               onClick={() => handleNavClick("tools")}
               aria-current={currentView === "tools" ? "page" : undefined}
             >
-              Browse All Tools
+              Job Tools
             </button>
           </li>
           <li>
@@ -113,7 +113,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
             onClick={() => handleNavClick("tools")}
             aria-current={currentView === "tools" ? "page" : undefined}
           >
-            Browse All Tools
+            Job Tools
           </button>
           <button onClick={() => handleNavClick("home", "about")}>About</button>
           <div className="navbar__mobile-theme">
