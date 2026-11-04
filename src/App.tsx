@@ -8,7 +8,7 @@ import AllToolsPage from "./components/AllToolsPage/AllToolsPage";
 import SubmitToolPage from "./components/SubmitToolPage/SubmitToolPage";
 import { ToolDetailModal } from "./components/ToolDetailModal/ToolDetailModal";
 import { CategoryIcon } from "./components/common/CategoryIcon";
-import toolsData from "./data/tools.json";
+import toolsData from "./data/new_tools.json";
 import type { ToolsData, Tool } from "./types";
 import "./App.css";
 

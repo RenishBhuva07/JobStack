@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 interface ToolBadgeProps {
-  badge: string;
+  badge?: string | null;
   className?: string;
   id?: string;
   size?: "sm" | "md";

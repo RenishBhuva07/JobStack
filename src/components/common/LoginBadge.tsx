@@ -3,23 +3,30 @@ import { KeyRound, ShieldCheck } from "lucide-react";
 import "./LoginBadge.css";
 
 export interface LoginBadgeProps {
-  loginType?: string | null;
+  loginType?: string | string[] | null;
   className?: string;
   id?: string;
   size?: "sm" | "md";
 }
 
-export const LoginBadge: React.FC<LoginBadgeProps> = ({
-  loginType,
+interface SingleLoginBadgeProps {
+  type: string;
+  className?: string;
+  id?: string;
+  size?: "sm" | "md";
+}
+
+const SingleLoginBadge: React.FC<SingleLoginBadgeProps> = ({
+  type,
   className = "",
   id,
   size = "sm",
 }) => {
-  if (!loginType || typeof loginType !== "string" || !loginType.trim()) {
+  if (!type || typeof type !== "string" || !type.trim()) {
     return null;
   }
 
-  const raw = loginType.trim();
+  const raw = type.trim();
   const lower = raw.toLowerCase();
   const iconSize = size === "md" ? 13 : 11;
 
@@ -69,33 +76,82 @@ export const LoginBadge: React.FC<LoginBadgeProps> = ({
   }
 
   if (isCredentials) {
+    const label =
+      lower === "email-password" || lower === "email_password"
+        ? "Email / Password"
+        : raw;
     return (
       <div
         id={id}
         className={`login-badge login-badge--credentials ${size === "md" ? "login-badge--md" : ""} ${className}`.trim()}
-        title="Saved Login: Username & Password"
-        aria-label="Logged in with Username & Password"
+        title={`Saved Login: ${label}`}
+        aria-label={`Logged in with ${label}`}
       >
         <span className="login-badge-icon">
           <KeyRound size={iconSize} strokeWidth={2.4} aria-hidden="true" />
         </span>
-        <span>Username Password</span>
+        <span>{label}</span>
       </div>
     );
   }
+
+  // Nicely format known single names (like "indeed" -> "Indeed Login")
+  const formattedLabel =
+    lower === "indeed"
+      ? "Indeed Login"
+      : raw.charAt(0).toUpperCase() + raw.slice(1);
 
   return (
     <div
       id={id}
       className={`login-badge login-badge--default ${size === "md" ? "login-badge--md" : ""} ${className}`.trim()}
-      title={`Saved Login: ${raw}`}
-      aria-label={`Logged in with ${raw}`}
+      title={`Saved Login: ${formattedLabel}`}
+      aria-label={`Logged in with ${formattedLabel}`}
     >
       <span className="login-badge-icon">
         <ShieldCheck size={iconSize} strokeWidth={2.2} aria-hidden="true" />
       </span>
-      <span>{raw}</span>
+      <span>{formattedLabel}</span>
     </div>
+  );
+};
+
+export const LoginBadge: React.FC<LoginBadgeProps> = ({
+  loginType,
+  className = "",
+  id,
+  size = "sm",
+}) => {
+  if (!loginType) return null;
+
+  if (Array.isArray(loginType)) {
+    const valid = loginType.filter(
+      (t) => typeof t === "string" && t.trim().length > 0,
+    );
+    if (valid.length === 0) return null;
+
+    return (
+      <>
+        {valid.map((t, index) => (
+          <SingleLoginBadge
+            key={`${t}-${index}`}
+            type={t}
+            className={className}
+            id={id ? `${id}-${index}` : undefined}
+            size={size}
+          />
+        ))}
+      </>
+    );
+  }
+
+  return (
+    <SingleLoginBadge
+      type={loginType}
+      className={className}
+      id={id}
+      size={size}
+    />
   );
 };
 

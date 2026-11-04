@@ -81,6 +81,18 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
 
   const currentIndex = toolsList.findIndex((t) => t.id === tool.id);
 
+  const numericRating =
+    typeof tool.rating === "number"
+      ? tool.rating
+      : tool.rating &&
+          typeof tool.rating === "object" &&
+          typeof tool.rating.value === "number"
+        ? tool.rating.value
+        : null;
+
+  const ratingDetail =
+    tool.rating && typeof tool.rating === "object" ? tool.rating : null;
+
   return (
     <div
       className="tool-modal-overlay"
@@ -194,18 +206,35 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               </div>
             )}
 
-            <div className="tool-modal-meta-item">
-              <span className="tool-modal-meta-label">Community Rating</span>
-              <span className="tool-modal-meta-value rating-pill">
-                <Star
-                  size={13}
-                  fill="currentColor"
-                  strokeWidth={0}
-                  className="modal-rating-star"
-                />
-                {tool.rating} / 5.0
-              </span>
-            </div>
+            {numericRating !== null ? (
+              <div className="tool-modal-meta-item">
+                <span className="tool-modal-meta-label">Rating</span>
+                <span className="tool-modal-meta-value rating-pill">
+                  <Star
+                    size={13}
+                    fill="currentColor"
+                    strokeWidth={0}
+                    className="modal-rating-star"
+                  />
+                  {numericRating} / 5.0
+                  {ratingDetail?.source && (
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        opacity: 0.85,
+                        marginLeft: "4px",
+                      }}
+                    >
+                      ({ratingDetail.source}
+                      {ratingDetail.reviews
+                        ? ` · ${ratingDetail.reviews} reviews`
+                        : ""}
+                      )
+                    </span>
+                  )}
+                </span>
+              </div>
+            ) : null}
 
             <div className="tool-modal-meta-item">
               <span className="tool-modal-meta-label">Pricing Model</span>
@@ -213,6 +242,18 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
                 {tool.pricing}
               </span>
             </div>
+
+            {tool.seekerCost && (
+              <div className="tool-modal-meta-item">
+                <span className="tool-modal-meta-label">Seeker Cost</span>
+                <span
+                  className="tool-modal-meta-value"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {tool.seekerCost}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Description */}
@@ -220,6 +261,14 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             <h4 className="tool-modal-section-title">Overview</h4>
             <p className="tool-modal-description">{tool.description}</p>
           </div>
+
+          {/* Verified Notes / Insider Pro-Tip */}
+          {tool.notes && (
+            <div className="tool-modal-section tool-modal-notes-box">
+              <h4 className="tool-modal-section-title">Verified Insight</h4>
+              <p className="tool-modal-notes-text">{tool.notes}</p>
+            </div>
+          )}
 
           {/* Key Features */}
           {tool.features && tool.features.length > 0 && (
@@ -247,13 +296,25 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
             </div>
           )}
 
-          {/* Tags */}
+          {/* Tags & Metadata */}
           <div className="tool-modal-section">
-            <h4 className="tool-modal-section-title">Tags & Focus Areas</h4>
+            <h4 className="tool-modal-section-title">
+              Tags & Target Audiences
+            </h4>
             <div className="tool-modal-tags">
               {tool.tags.map((tag) => (
-                <span key={tag} className="tool-modal-tag">
+                <span key={`tag-${tag}`} className="tool-modal-tag">
                   #{tag}
+                </span>
+              ))}
+              {tool.regions?.map((reg) => (
+                <span key={`reg-${reg}`} className="tool-modal-tag">
+                  🌐 {reg}
+                </span>
+              ))}
+              {tool.audience?.map((aud) => (
+                <span key={`aud-${aud}`} className="tool-modal-tag">
+                  👥 {aud}
                 </span>
               ))}
             </div>

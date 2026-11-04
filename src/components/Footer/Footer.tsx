@@ -205,7 +205,29 @@ export default function Footer({
                   onClick={() => handleNav("tools", undefined, "Job Boards")}
                 >
                   <span>Job Boards</span>
-                  <span className="footer__link-pill">18</span>
+                  <span className="footer__link-pill">5</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="footer__link"
+                  onClick={() =>
+                    handleNav("tools", undefined, "Remote Platforms")
+                  }
+                >
+                  <span>Remote Platforms</span>
+                  <span className="footer__link-pill">10</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="footer__link"
+                  onClick={() => handleNav("tools", undefined, "Startup Jobs")}
+                >
+                  <span>Startup Jobs</span>
+                  <span className="footer__link-pill">5</span>
                 </button>
               </li>
               <li>
@@ -217,17 +239,7 @@ export default function Footer({
                   }
                 >
                   <span>Freelance Platforms</span>
-                  <span className="footer__link-pill">6</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="footer__link"
-                  onClick={() => handleNav("tools", undefined, "Portfolio")}
-                >
-                  <span>Portfolio Platforms</span>
-                  <span className="footer__link-pill">2</span>
+                  <span className="footer__link-pill">10</span>
                 </button>
               </li>
               <li>
@@ -250,7 +262,9 @@ export default function Footer({
                 <button
                   type="button"
                   className="footer__link"
-                  onClick={() => handleNav("tools", undefined, "Job Boards")}
+                  onClick={() =>
+                    handleNav("tools", undefined, "Remote Platforms")
+                  }
                 >
                   Global Remote Tech Portals
                 </button>
@@ -270,7 +284,7 @@ export default function Footer({
                 <button
                   type="button"
                   className="footer__link"
-                  onClick={() => handleNav("tools", undefined, "Job Boards")}
+                  onClick={() => handleNav("tools", undefined, "Startup Jobs")}
                 >
                   Direct Startup & YC Jobs
                 </button>

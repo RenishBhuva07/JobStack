@@ -1,5 +1,5 @@
 import { Tag } from "lucide-react";
-import type { Tool } from "../../types";
+import type { Tool, RatingDetail } from "../../types";
 import { BrandIcon } from "./BrandLogos";
 import { ToolBadge } from "../common/ToolBadge";
 import { LoginBadge } from "../common/LoginBadge";
@@ -18,15 +18,39 @@ const categoryClassMap: Record<string, string> = {
   "Cold Outreach": "category-badge--cold-outreach",
   Networking: "category-badge--networking",
   Portfolio: "category-badge--portfolio",
+  "Aggregators & Search": "category-badge--aggregators",
+  "Company Research": "category-badge--research",
+  "Startup Jobs": "category-badge--startup",
+  "Remote Platforms": "category-badge--remote",
+  "Remote Jobs": "category-badge--remote",
+  "India Portals": "category-badge--india",
+  "Paid Services": "category-badge--paid",
 };
 
 export function getCategoryBadgeClass(category: string): string {
   return categoryClassMap[category] || "category-badge--default";
 }
 
-function StarRating({ rating }: { rating: number }) {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating - fullStars >= 0.5;
+function getNumericRating(
+  rating?: number | RatingDetail | null,
+): number | null {
+  if (typeof rating === "number") return rating;
+  if (
+    rating &&
+    typeof rating === "object" &&
+    typeof rating.value === "number"
+  ) {
+    return rating.value;
+  }
+  return null;
+}
+
+function StarRating({ rating }: { rating?: number | RatingDetail | null }) {
+  const num = getNumericRating(rating);
+  if (num === null) return null;
+
+  const fullStars = Math.floor(num);
+  const hasHalfStar = num - fullStars >= 0.5;
 
   return (
     <div className="tool-card__stars" aria-label={`Rating: ${rating} out of 5`}>
@@ -78,7 +102,7 @@ function StarRating({ rating }: { rating: number }) {
           </span>
         );
       })}
-      <span className="tool-card__rating-num">{rating}</span>
+      <span className="tool-card__rating-num">{num}</span>
     </div>
   );
 }

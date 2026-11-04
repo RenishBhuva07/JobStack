@@ -1,5 +1,5 @@
-import { useState, useMemo, useRef, useEffect } from "react";
-import { X, Search, ArrowRight } from "lucide-react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
+import { X, Search, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Tool } from "../../types";
 import ToolGrid from "../ToolGrid/ToolGrid";
 import { CategoryIcon } from "../common/CategoryIcon";
@@ -14,10 +14,25 @@ interface AllToolsPageProps {
 }
 
 const categoryDescriptions: Record<string, string> = {
+  All: "Browse the complete directory across all career domains and skills.",
   "Freelance Platforms":
     "Top marketplaces and vetted networks to find client projects and contracts.",
   "Job Boards":
     "Premier portals and aggregators for remote, tech, and corporate opportunities.",
+  "Aggregators & Search":
+    "Search engines and aggregators indexing openings directly from employer ATS and career sites.",
+  "Company Research":
+    "Platforms providing workplace transparency, culture reviews, salaries, and company intel.",
+  "Startup Jobs":
+    "Curated job portals dedicated to early-stage ventures, YC startups, and high-growth tech.",
+  "Remote Platforms":
+    "Dedicated distributed work platforms connecting global talent to location-independent roles.",
+  "Remote Jobs":
+    "Dedicated distributed work platforms connecting global talent to location-independent roles.",
+  "India Portals":
+    "Premier regional job portals, campus recruitment, and internships for the Indian tech market.",
+  "Paid Services":
+    "Specialized premium placement services, executive talent networks, and vetted job boards.",
   "AI-Powered": "AI tools to accelerate your applications and outreach.",
   "Cold Outreach": "Direct contact databases and email intelligence tools.",
   Networking: "Communities and social platforms to build personal branding.",
@@ -34,12 +49,71 @@ export default function AllToolsPage({
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"sections" | "grid">("sections");
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [isMac, setIsMac] = useState(false);
+  const [isMac] = useState(
+    () =>
+      typeof navigator !== "undefined" &&
+      /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent),
+  );
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
+  // Horizontal category track scrolling state
+  const tabsTrackRef = useRef<HTMLDivElement>(null);
+  const categoryPillRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  // Check scroll position to dynamically show/hide chevrons and gradient fade masks
+  const checkScroll = useCallback(() => {
+    const el = tabsTrackRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 3);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 3);
   }, []);
+
+  useEffect(() => {
+    const el = tabsTrackRef.current;
+    if (!el) return;
+
+    checkScroll();
+
+    const resizeObserver = new ResizeObserver(() => {
+      checkScroll();
+    });
+    resizeObserver.observe(el);
+
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+
+    return () => {
+      resizeObserver.disconnect();
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll]);
+
+  // Smooth scroll category tabs via chevron buttons
+  const handleScrollChevron = (direction: "left" | "right") => {
+    const el = tabsTrackRef.current;
+    if (!el) return;
+    const scrollAmount = Math.max(220, Math.floor(el.clientWidth * 0.55));
+    el.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Auto-scroll active category pill into center of track when changed
+  useEffect(() => {
+    const activeBtn = categoryPillRefs.current[activeCategory];
+    if (activeBtn) {
+      activeBtn.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  }, [activeCategory]);
 
   // Global keyboard shortcuts: Cmd+F (Mac) or Ctrl+F (Windows/Linux) focuses search
   useEffect(() => {
@@ -50,7 +124,7 @@ export default function AllToolsPage({
       if (isModifier && isFKey) {
         // Do not intercept if a modal or dialog overlay is open
         const isModalOpen = Boolean(
-          document.querySelector(".tool-detail-modal-overlay, [role='dialog']")
+          document.querySelector(".tool-detail-modal-overlay, [role='dialog']"),
         );
         if (isModalOpen) return;
 
@@ -107,6 +181,13 @@ export default function AllToolsPage({
     return tools.filter((tool) => {
       const matchesCategory =
         activeCategory === "All" || tool.category === activeCategory;
+
+      const matchesLogin = Array.isArray(tool.loginType)
+        ? tool.loginType.some((lt) => lt.toLowerCase().includes(q))
+        : typeof tool.loginType === "string"
+          ? tool.loginType.toLowerCase().includes(q)
+          : false;
+
       const matchesSearch =
         !q ||
         tool.name.toLowerCase().includes(q) ||
@@ -114,7 +195,23 @@ export default function AllToolsPage({
         tool.description.toLowerCase().includes(q) ||
         tool.category.toLowerCase().includes(q) ||
         tool.tags.some((tag) => tag.toLowerCase().includes(q)) ||
-        Boolean(tool.loginType && tool.loginType.toLowerCase().includes(q));
+        Boolean(
+          tool.aliases &&
+          tool.aliases.some((alias) => alias.toLowerCase().includes(q)),
+        ) ||
+        Boolean(
+          tool.regions &&
+          tool.regions.some((reg) => reg.toLowerCase().includes(q)),
+        ) ||
+        Boolean(
+          tool.focus && tool.focus.some((f) => f.toLowerCase().includes(q)),
+        ) ||
+        Boolean(
+          tool.audience &&
+          tool.audience.some((aud) => aud.toLowerCase().includes(q)),
+        ) ||
+        Boolean(tool.notes && tool.notes.toLowerCase().includes(q)) ||
+        matchesLogin;
       return matchesCategory && matchesSearch;
     });
   }, [tools, activeCategory, searchQuery]);
@@ -139,24 +236,91 @@ export default function AllToolsPage({
   }, [availableCategories, filteredTools]);
 
   const activeCategoriesWithTools = useMemo(() => {
-    return Object.keys(toolsByCategory).filter(
-      (cat) => toolsByCategory[cat].length > 0,
+    return availableCategories.filter(
+      (cat) =>
+        cat !== "All" &&
+        toolsByCategory[cat] &&
+        toolsByCategory[cat].length > 0,
     );
-  }, [toolsByCategory]);
+  }, [availableCategories, toolsByCategory]);
 
   return (
     <div className="all-tools-page" id="all-tools-page">
-      {/* Compact Page Header with Title and Right-Side Stats */}
+      {/* Compact Page Header with Title and Right-Side Controls */}
       <div className="all-tools-page__hero">
         <div className="container all-tools-page__hero-inner">
           <div className="all-tools-page__title-row">
             <h1 className="all-tools-page__title">
               Explore All <span className="gradient-text">Job Tools</span>
             </h1>
-            <span className="all-tools-page__stats-subtitle">
-              <strong>{tools.length} tools</strong> handpicked across{" "}
-              <strong>{availableCategories.length - 1} categories</strong>
-            </span>
+            <div className="all-tools-page__title-right">
+              <span className="all-tools-page__stats-subtitle">
+                <strong>{tools.length} tools</strong> handpicked across{" "}
+                <strong>{availableCategories.length - 1} categories</strong>
+              </span>
+
+              {/* View Mode Switcher (Sections vs Grid) */}
+              <div
+                className="all-tools-page__view-toggle"
+                role="group"
+                aria-label="View layout mode"
+              >
+                <button
+                  type="button"
+                  className={`all-tools-page__toggle-btn ${
+                    viewMode === "sections" ? "active" : ""
+                  }`}
+                  onClick={() => {
+                    setViewMode("sections");
+                    if (activeCategory !== "All") {
+                      handleSelectCategory("All");
+                    }
+                    if (searchQuery) {
+                      setSearchQuery("");
+                    }
+                  }}
+                  title="View categorized sections"
+                  aria-label="Sections view"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <rect x="3" y="3" width="18" height="6" rx="2" />
+                    <rect x="3" y="14" width="18" height="6" rx="2" />
+                  </svg>
+                  <span>Sections</span>
+                </button>
+                <button
+                  type="button"
+                  className={`all-tools-page__toggle-btn ${
+                    viewMode === "grid" ? "active" : ""
+                  }`}
+                  onClick={() => setViewMode("grid")}
+                  title="View unified grid"
+                  aria-label="Grid view"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                  </svg>
+                  <span>Grid</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -219,71 +383,83 @@ export default function AllToolsPage({
             )}
           </div>
 
-          {/* Inline Category Pills */}
-          <div className="all-tools-page__category-tabs">
-            {availableCategories.map((cat) => {
-              const count = categoryCounts[cat] || 0;
-              return (
-                <button
-                  key={cat}
-                  className={`all-tools-page__cat-tab ${activeCategory === cat ? "active" : ""}`}
-                  onClick={() => handleSelectCategory(cat)}
-                >
-                  <span className="all-tools-page__tab-icon">
-                    <CategoryIcon category={cat} size={13} />
-                  </span>
-                  <span>{cat}</span>
-                  <span className="all-tools-page__tab-badge">{count}</span>
-                </button>
-              );
-            })}
-          </div>
+          {/* Interactive Scrollable Category Navigation */}
+          <div className="all-tools-page__category-nav">
+            {/* Left Dynamic Edge Fade Mask */}
+            <div
+              className={`all-tools-page__scroll-fade all-tools-page__scroll-fade--left ${
+                canScrollLeft ? "visible" : ""
+              }`}
+              aria-hidden="true"
+            />
 
-          {/* View Mode Switcher (available when viewing All) */}
-          {activeCategory === "All" && !searchQuery && (
-            <div className="all-tools-page__view-toggle">
+            {/* Left Chevron Button */}
+            {canScrollLeft && (
               <button
-                className={`all-tools-page__toggle-btn ${viewMode === "sections" ? "active" : ""}`}
-                onClick={() => setViewMode("sections")}
-                title="View categorized sections"
-                aria-label="Sections view"
+                type="button"
+                className="all-tools-page__chevron-btn all-tools-page__chevron-btn--left"
+                onClick={() => handleScrollChevron("left")}
+                aria-label="Scroll categories left"
+                title="Scroll categories left"
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <rect x="3" y="3" width="18" height="6" rx="2" />
-                  <rect x="3" y="14" width="18" height="6" rx="2" />
-                </svg>
-                <span>Sections</span>
+                <ChevronLeft size={15} strokeWidth={2.5} />
               </button>
-              <button
-                className={`all-tools-page__toggle-btn ${viewMode === "grid" ? "active" : ""}`}
-                onClick={() => setViewMode("grid")}
-                title="View unified grid"
-                aria-label="Grid view"
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <rect x="3" y="3" width="7" height="7" rx="1" />
-                  <rect x="14" y="3" width="7" height="7" rx="1" />
-                  <rect x="3" y="14" width="7" height="7" rx="1" />
-                  <rect x="14" y="14" width="7" height="7" rx="1" />
-                </svg>
-                <span>Grid</span>
-              </button>
+            )}
+
+            {/* Category Pills Track */}
+            <div
+              ref={tabsTrackRef}
+              className="all-tools-page__category-tabs"
+              role="tablist"
+              aria-label="Filter by category"
+            >
+              {availableCategories.map((cat) => {
+                const count = categoryCounts[cat] || 0;
+                const isActive = activeCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    ref={(el) => {
+                      categoryPillRefs.current[cat] = el;
+                    }}
+                    id={`filter-${cat.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                    className={`all-tools-page__cat-tab ${isActive ? "active" : ""}`}
+                    onClick={() => handleSelectCategory(cat)}
+                    role="tab"
+                    aria-selected={isActive}
+                    title={`${cat} (${count} tools)`}
+                  >
+                    <span className="all-tools-page__tab-icon">
+                      <CategoryIcon category={cat} size={13} />
+                    </span>
+                    <span className="all-tools-page__tab-label">{cat}</span>
+                    <span className="all-tools-page__tab-badge">{count}</span>
+                  </button>
+                );
+              })}
             </div>
-          )}
+
+            {/* Right Dynamic Edge Fade Mask */}
+            <div
+              className={`all-tools-page__scroll-fade all-tools-page__scroll-fade--right ${
+                canScrollRight ? "visible" : ""
+              }`}
+              aria-hidden="true"
+            />
+
+            {/* Right Chevron Button */}
+            {canScrollRight && (
+              <button
+                type="button"
+                className="all-tools-page__chevron-btn all-tools-page__chevron-btn--right"
+                onClick={() => handleScrollChevron("right")}
+                aria-label="Scroll categories right"
+                title="Scroll categories right"
+              >
+                <ChevronRight size={15} strokeWidth={2.5} />
+              </button>
+            )}
+          </div>
         </div>
       </div>
 

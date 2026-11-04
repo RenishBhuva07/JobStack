@@ -93,6 +93,30 @@
   --cat-portfolio-text: #fb7185;
   --cat-portfolio-border: rgba(244, 63, 94, 0.25);
 
+  --cat-aggregators-bg: rgba(6, 182, 212, 0.12);
+  --cat-aggregators-text: #22d3ee;
+  --cat-aggregators-border: rgba(6, 182, 212, 0.25);
+
+  --cat-research-bg: rgba(99, 102, 241, 0.12);
+  --cat-research-text: #818cf8;
+  --cat-research-border: rgba(99, 102, 241, 0.25);
+
+  --cat-startup-bg: rgba(249, 115, 22, 0.12);
+  --cat-startup-text: #fb923c;
+  --cat-startup-border: rgba(249, 115, 22, 0.25);
+
+  --cat-remote-bg: rgba(20, 184, 166, 0.12);
+  --cat-remote-text: #2dd4bf;
+  --cat-remote-border: rgba(20, 184, 166, 0.25);
+
+  --cat-india-bg: rgba(245, 158, 11, 0.12);
+  --cat-india-text: #fbbf24;
+  --cat-india-border: rgba(245, 158, 11, 0.25);
+
+  --cat-paid-bg: rgba(168, 85, 247, 0.12);
+  --cat-paid-text: #c084fc;
+  --cat-paid-border: rgba(168, 85, 247, 0.25);
+
   /* Gradients */
   --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   --gradient-card: linear-gradient(
@@ -193,6 +217,30 @@
   --cat-portfolio-bg: #fff1f2;
   --cat-portfolio-text: #be123c;
   --cat-portfolio-border: #fecdd3;
+
+  --cat-aggregators-bg: #ecfeff;
+  --cat-aggregators-text: #0e7490;
+  --cat-aggregators-border: #a5f3fc;
+
+  --cat-research-bg: #eef2ff;
+  --cat-research-text: #4338ca;
+  --cat-research-border: #c7d2fe;
+
+  --cat-startup-bg: #fff7ed;
+  --cat-startup-text: #c2410c;
+  --cat-startup-border: #fed7aa;
+
+  --cat-remote-bg: #f0fdfa;
+  --cat-remote-text: #0f766e;
+  --cat-remote-border: #99f6e4;
+
+  --cat-india-bg: #fffbeb;
+  --cat-india-text: #b45309;
+  --cat-india-border: #fde68a;
+
+  --cat-paid-bg: #faf5ff;
+  --cat-paid-text: #7e22ce;
+  --cat-paid-border: #e9d5ff;
 
   /* Gradients */
   --gradient-brand: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
@@ -348,6 +396,42 @@ button {
   background: var(--cat-portfolio-bg);
   color: var(--cat-portfolio-text);
   border-color: var(--cat-portfolio-border);
+}
+
+.category-badge--aggregators {
+  background: var(--cat-aggregators-bg);
+  color: var(--cat-aggregators-text);
+  border-color: var(--cat-aggregators-border);
+}
+
+.category-badge--research {
+  background: var(--cat-research-bg);
+  color: var(--cat-research-text);
+  border-color: var(--cat-research-border);
+}
+
+.category-badge--startup {
+  background: var(--cat-startup-bg);
+  color: var(--cat-startup-text);
+  border-color: var(--cat-startup-border);
+}
+
+.category-badge--remote {
+  background: var(--cat-remote-bg);
+  color: var(--cat-remote-text);
+  border-color: var(--cat-remote-border);
+}
+
+.category-badge--india {
+  background: var(--cat-india-bg);
+  color: var(--cat-india-text);
+  border-color: var(--cat-india-border);
+}
+
+.category-badge--paid {
+  background: var(--cat-paid-bg);
+  color: var(--cat-paid-text);
+  border-color: var(--cat-paid-border);
 }
 
 .category-badge--default {

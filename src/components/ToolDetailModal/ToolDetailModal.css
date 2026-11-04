@@ -338,6 +338,21 @@
   }
 }
 
+.tool-modal-notes-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-blue);
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.tool-modal-notes-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
 @keyframes modalZoomIn {
   from {
     opacity: 0;
