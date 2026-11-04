@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { X, Search, ArrowRight } from "lucide-react";
 import type { Tool } from "../../types";
 import ToolGrid from "../ToolGrid/ToolGrid";
@@ -33,6 +33,40 @@ export default function AllToolsPage({
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"sections" | "grid">("sections");
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
+  }, []);
+
+  // Global keyboard shortcuts: Cmd+F (Mac) or Ctrl+F (Windows/Linux) focuses search
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      const isModifier = e.metaKey || e.ctrlKey;
+      const isFKey = e.key.toLowerCase() === "f" || e.code === "KeyF";
+
+      if (isModifier && isFKey) {
+        // Do not intercept if a modal or dialog overlay is open
+        const isModalOpen = Boolean(
+          document.querySelector(".tool-detail-modal-overlay, [role='dialog']")
+        );
+        if (isModalOpen) return;
+
+        // Prevent browser's native find-in-page dialog
+        e.preventDefault();
+
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+          searchInputRef.current.select();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
 
   const handleSelectCategory = (cat: string) => {
     setActiveCategory(cat);
@@ -131,7 +165,7 @@ export default function AllToolsPage({
       <div className="all-tools-page__toolbar">
         <div className="container all-tools-page__toolbar-inner">
           {/* Search Box */}
-          <div className="all-tools-page__search-wrap">
+          <div className="all-tools-page__search-wrap" role="search">
             <svg
               className="all-tools-page__search-icon"
               width="15"
@@ -145,17 +179,39 @@ export default function AllToolsPage({
               <path d="m21 21-4.35-4.35" />
             </svg>
             <input
+              ref={searchInputRef}
               type="text"
               className="all-tools-page__search-input"
               placeholder="Search tools, platforms, skills..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search tools"
+              onFocus={() => setIsSearchFocused(true)}
+              onBlur={() => setIsSearchFocused(false)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  e.preventDefault();
+                  searchInputRef.current?.blur();
+                }
+              }}
+              aria-label={`Search tools (Press ${isMac ? "⌘F" : "Ctrl+F"} to focus, Esc to blur)`}
+              aria-keyshortcuts="Control+F Meta+F"
             />
+            {!searchQuery && !isSearchFocused && (
+              <kbd
+                className="all-tools-page__search-kbd"
+                aria-hidden="true"
+                title={`Press ${isMac ? "Cmd+F" : "Ctrl+F"} to search`}
+              >
+                {isMac ? "⌘F" : "Ctrl F"}
+              </kbd>
+            )}
             {searchQuery && (
               <button
                 className="all-tools-page__search-clear"
-                onClick={() => setSearchQuery("")}
+                onClick={() => {
+                  setSearchQuery("");
+                  searchInputRef.current?.focus();
+                }}
                 aria-label="Clear search"
               >
                 <X size={12} strokeWidth={2.5} />
