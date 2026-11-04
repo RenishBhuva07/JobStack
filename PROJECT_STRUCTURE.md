@@ -10,6 +10,7 @@ This document provides a comprehensive guide to the file structure, component ar
 job-tools/
 ├── AGENT.md                       # Operational rules and code integration guidelines for AI agents
 ├── JobStack.md                    # Project scenarios, requirements, and AI productivity guide
+├── PROJECT_REQUIREMENTS.md        # Core requirements, features, goals, and AI context guide
 ├── PROJECT_STRUCTURE.md           # This document: full architecture and file reference
 ├── README.md                      # Developer quick-start and project summary
 ├── index.html                     # HTML root entry point and initial meta tags
