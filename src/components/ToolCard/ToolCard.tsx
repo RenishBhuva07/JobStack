@@ -2,6 +2,7 @@ import { Tag } from "lucide-react";
 import type { Tool } from "../../types";
 import { BrandIcon } from "./BrandLogos";
 import { ToolBadge } from "../common/ToolBadge";
+import { LoginBadge } from "../common/LoginBadge";
 import "./ToolCard.css";
 
 interface ToolCardProps {
@@ -103,9 +104,18 @@ export default function ToolCard({ tool, index, onExplore }: ToolCardProps) {
           <BrandIcon name={tool.name} url={tool.url} size={48} />
         </div>
 
-        {tool.badge && (
-          <ToolBadge badge={tool.badge} id={`badge-${tool.id}`} size="sm" />
-        )}
+        <div className="tool-card__badges">
+          {tool.badge && (
+            <ToolBadge badge={tool.badge} id={`badge-${tool.id}`} size="sm" />
+          )}
+          {tool.loginType && (
+            <LoginBadge
+              loginType={tool.loginType}
+              id={`login-badge-${tool.id}`}
+              size="sm"
+            />
+          )}
+        </div>
       </div>
 
       {/* Body: Title, Tagline, Description & Tags */}

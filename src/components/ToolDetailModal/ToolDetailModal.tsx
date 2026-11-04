@@ -3,6 +3,7 @@ import { Star, ArrowLeft, ArrowRight } from "lucide-react";
 import type { Tool } from "../../types";
 import { BrandIcon } from "../ToolCard/BrandLogos";
 import { ToolBadge } from "../common/ToolBadge";
+import { LoginBadge } from "../common/LoginBadge";
 import "./ToolDetailModal.css";
 
 interface ToolDetailModalProps {
@@ -167,6 +168,9 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
               <div className="tool-modal-name-row">
                 <h2 className="tool-modal-title">{tool.name}</h2>
                 {tool.badge && <ToolBadge badge={tool.badge} size="md" />}
+                {tool.loginType && (
+                  <LoginBadge loginType={tool.loginType} size="md" />
+                )}
               </div>
               <p className="tool-modal-tagline">{tool.tagline}</p>
             </div>
@@ -180,6 +184,15 @@ export const ToolDetailModal: React.FC<ToolDetailModalProps> = ({
                 {tool.category}
               </span>
             </div>
+
+            {tool.loginType && (
+              <div className="tool-modal-meta-item">
+                <span className="tool-modal-meta-label">Login Method</span>
+                <span className="tool-modal-meta-value">
+                  <LoginBadge loginType={tool.loginType} size="sm" />
+                </span>
+              </div>
+            )}
 
             <div className="tool-modal-meta-item">
               <span className="tool-modal-meta-label">Community Rating</span>

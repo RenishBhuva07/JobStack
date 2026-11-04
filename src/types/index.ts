@@ -1,3 +1,5 @@
+export type LoginType = "Google Login" | "Username Password" | "" | string;
+
 export interface Tool {
   id: number;
   name: string;
@@ -11,6 +13,7 @@ export interface Tool {
   rating: number;
   featured: boolean;
   badge: string;
+  loginType?: LoginType;
   features?: string[];
 }
 
@@ -18,4 +21,3 @@ export interface ToolsData {
   categories: string[];
   tools: Tool[];
 }
-

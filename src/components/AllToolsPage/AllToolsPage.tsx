@@ -42,7 +42,8 @@ export default function AllToolsPage({
     window.history.replaceState(null, "", targetUrl);
   };
 
-  const [prevInitialCategory, setPrevInitialCategory] = useState(initialCategory);
+  const [prevInitialCategory, setPrevInitialCategory] =
+    useState(initialCategory);
   if (prevInitialCategory !== initialCategory) {
     setPrevInitialCategory(initialCategory);
     setActiveCategory(initialCategory);
@@ -78,7 +79,8 @@ export default function AllToolsPage({
         tool.tagline.toLowerCase().includes(q) ||
         tool.description.toLowerCase().includes(q) ||
         tool.category.toLowerCase().includes(q) ||
-        tool.tags.some((tag) => tag.toLowerCase().includes(q));
+        tool.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+        Boolean(tool.loginType && tool.loginType.toLowerCase().includes(q));
       return matchesCategory && matchesSearch;
     });
   }, [tools, activeCategory, searchQuery]);

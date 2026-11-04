@@ -49,6 +49,11 @@ const KNOWN_PORTAL_URLS: Record<string, string> = {
   welcometothejungle: "https://www.welcometothejungle.com",
   glassdoor: "https://www.glassdoor.com",
   hiringcafe: "https://hiringcafe.com",
+  instahyre: "https://www.instahyre.com",
+  dice: "https://www.dice.com",
+  timesjobs: "https://www.timesjobs.com",
+  "unique business systems": "https://volarisgroup.wd3.myworkdayjobs.com",
+  volaris: "https://volarisgroup.wd3.myworkdayjobs.com",
 };
 
 /**

@@ -19,7 +19,8 @@
         "Enterprise client access",
         "Escrow payment protection",
         "Global talent pool"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 2,
@@ -39,7 +40,8 @@
         "Dedicated matchmakers",
         "Silicon Valley rates",
         "Zero bidding wars"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 3,
@@ -59,7 +61,8 @@
         "Fiverr Pro verification",
         "Packaged pricing tiers",
         "Instant order chat"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 4,
@@ -79,7 +82,8 @@
         "Easy Apply functionality",
         "Salary and company insights",
         "Automated job alerts"
-      ]
+      ],
+      "loginType": "Username Password"
     },
     {
       "id": 5,
@@ -104,7 +108,8 @@
         "Resume builder & upload",
         "Company salary comparisons",
         "Instant mobile notifications"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 6,
@@ -124,7 +129,8 @@
         "Naukri FastForward boosts",
         "Custom skill search filters",
         "Daily interview alerts"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 7,
@@ -144,7 +150,8 @@
         "No location restrictions",
         "Vetted tech companies",
         "Weekly job digest"
-      ]
+      ],
+      "loginType": "Username Password"
     },
     {
       "id": 8,
@@ -164,7 +171,8 @@
         "Built-in contracts & invoicing",
         "Modern visual portfolio",
         "Direct client messaging"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 9,
@@ -184,7 +192,8 @@
         "Guaranteed 48hr client match",
         "Consistent hourly billing",
         "Dedicated project support"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 10,
@@ -204,7 +213,8 @@
         "Silicon Valley salary rates",
         "Full-time & contract gigs",
         "Developer career coaching"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 11,
@@ -224,7 +234,8 @@
         "AI personalization match",
         "Strict quality curation",
         "Fast application flow"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 12,
@@ -244,7 +255,8 @@
         "Enterprise Fortune 100 clients",
         "Community token governance",
         "Direct recruiter relationships"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 13,
@@ -264,7 +276,8 @@
         "Direct creative job board",
         "Case study presentation",
         "Global client reach"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 14,
@@ -284,7 +297,8 @@
         "Direct message client hiring",
         "Handpicked visual showcases",
         "Freelance project leads"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 15,
@@ -304,7 +318,8 @@
         "Transparent salary statistics",
         "Digital nomad & timezone filters",
         "Real-time remote job alerts"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 16,
@@ -324,7 +339,8 @@
         "Transparent salary and equity packages",
         "130,000+ tech and startup positions",
         "Zero agency recruiters or middleman noise"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 17,
@@ -344,7 +360,8 @@
         "Direct founder screening and reviews",
         "Vetted seed to Series A+ companies",
         "Exclusive YC talent directory invitation"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 18,
@@ -364,7 +381,8 @@
         "100% scam-free and ad-free experience",
         "Career coaching & resume review discounts",
         "Over 50+ career fields and categories"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 19,
@@ -384,7 +402,8 @@
         "Comprehensive remote company directory",
         "Telecommute transition e-courses",
         "Customized daily job alerts"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 20,
@@ -404,14 +423,15 @@
         "Active global remote Slack community",
         "Country and timezone compatibility filters",
         "Direct company application forms"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 21,
       "name": "Working Nomads",
       "tagline": "Remote jobs for digital nomads on the move",
       "description": "Curated lists of remote jobs for professionals who want to work from anywhere around the globe, with strong focus on engineering, systems admin, copywriting, and design.",
-      "url": "https://www.workingnomads.com",
+      "url": "https://www.workingnomads.com/jobs",
       "logo": "",
       "category": "Job Boards",
       "tags": ["Digital Nomad", "Anywhere", "Remote", "Dev & Design"],
@@ -424,7 +444,8 @@
         "Global 'work from anywhere' filters",
         "Categorized by development, design, and management",
         "Direct apply to hiring companies"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 22,
@@ -444,7 +465,8 @@
         "Filter by exact timezone overlap and region",
         "Detailed company tech stack breakdowns",
         "In-depth company culture profiles"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 23,
@@ -464,7 +486,8 @@
         "Pre-screened hiring managers and roles",
         "Timezone overlap and visa requirement filters",
         "Free candidate talent directory profile"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 24,
@@ -484,7 +507,8 @@
         "Resume submission to employer talent pool",
         "Instant daily email alerts for new roles",
         "Startup through enterprise opportunities"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 25,
@@ -504,7 +528,8 @@
         "Features top companies in the 'Lenny 100'",
         "High-tier tech compensation and equity",
         "Direct connection to hiring tech leaders"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 26,
@@ -524,7 +549,8 @@
         "Filter by funding stage, role, and focus area",
         "Access to the a16z Talent Network",
         "Work at top tier Andreessen Horowitz ventures"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 27,
@@ -550,7 +576,8 @@
         "Paid internships and fresher job tracks",
         "Skill assessments and practice quizzes",
         "Campus and lateral recruitment drives"
-      ]
+      ],
+      "loginType": "Username Password"
     },
     {
       "id": 28,
@@ -570,7 +597,8 @@
         "Transparent salary and compensation bands",
         "AI matching based on verified skills",
         "High-priority verified candidate inbox"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 29,
@@ -595,7 +623,8 @@
         "Full-time remote global employment contracts",
         "Dedicated talent success advocate",
         "Assured on-time international payouts"
-      ]
+      ],
+      "loginType": "Google Login"
     },
     {
       "id": 30,
@@ -615,7 +644,8 @@
         "Verified and scam-free company postings",
         "Clear timezone and regional eligibility tags",
         "Daily alerts for new remote openings"
-      ]
+      ],
+      "loginType": "Username Password"
     },
     {
       "id": 31,
@@ -640,7 +670,8 @@
         "Instant 1-Click Apply across thousands of verified hiring companies",
         "Real-time application status tracking and interview invitations",
         "Personalized salary estimates and career progression insights"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 32,
@@ -665,7 +696,8 @@
         "Clear upfront salary ranges, contract types, and flexible work policies",
         "Transparent interview roadmap detailing every evaluation stage",
         "Curated tech, product, design, and startup ecosystem openings"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 33,
@@ -690,7 +722,8 @@
         "Detailed compensation breakdowns and salary comparison benchmarks",
         "Real interview questions and difficulty ratings shared by candidates",
         "Personalized job alerts with company review overlays"
-      ]
+      ],
+      "loginType": ""
     },
     {
       "id": 34,
@@ -715,6 +748,91 @@
         "Ultra-granular filtering by strict salary minimums, remote tiers, and tech stack",
         "Conversational natural-language AI search and Talent Agent matching",
         "Anonymous reverse recruiting talent network where employers apply to you"
+      ],
+      "loginType": ""
+    },
+    {
+      "id": 35,
+      "name": "Instahyre",
+      "tagline": "AI-powered career platform connecting talent with top tech companies",
+      "description": "Instahyre matches candidates with curated tech and non-tech opportunities at leading companies and fast-growing startups using an intelligent matching engine.",
+      "url": "https://www.instahyre.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["AI-Matching", "Tech", "Startups", "India", "Remote"],
+      "pricing": "100% Free",
+      "rating": 4.6,
+      "featured": false,
+      "badge": "AI Matchmaker",
+      "loginType": "Google Login",
+      "features": [
+        "AI-driven matching algorithm",
+        "Direct outreach from verified recruiters",
+        "Top-tier unicorn and startup jobs",
+        "Zero spam application process"
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Dice.com",
+      "tagline": "The premier career hub for technology and engineering professionals",
+      "description": "Dice specializes in technology careers, offering predictive salary modeling, tech skill insights, and contract and full-time opportunities for software developers and IT pros.",
+      "url": "https://www.dice.com",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Tech", "Engineering", "Contract", "IT", "Remote"],
+      "pricing": "100% Free",
+      "rating": 4.3,
+      "featured": false,
+      "badge": "Tech Dedicated",
+      "loginType": "Username Password",
+      "features": [
+        "Tech-focused job matching",
+        "Predictive salary tools",
+        "Direct recruiter connections",
+        "Contract and full-time tech roles"
+      ]
+    },
+    {
+      "id": 37,
+      "name": "TimesJobs",
+      "tagline": "Smart job portal for executive, IT, and corporate careers in India",
+      "description": "Search and apply for verified corporate, IT, engineering, and managerial positions across India with tailored career assessment insights and alerts.",
+      "url": "https://www.timesjobs.com/candidate/myhome.html",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Job Board", "Corporate", "India", "IT", "Full-time"],
+      "pricing": "100% Free",
+      "rating": 4.1,
+      "featured": false,
+      "badge": "",
+      "loginType": "Username Password",
+      "features": [
+        "Comprehensive Indian corporate jobs",
+        "Direct employer applications",
+        "Resume match score",
+        "Personalized job alerts"
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Unique Business Systems",
+      "tagline": "Workday career portal for Unique Business Systems (Volaris Group)",
+      "description": "Direct applicant tracking career portal for software engineering, operations, and leadership opportunities at Unique Business Systems within Volaris Group.",
+      "url": "https://volarisgroup.wd3.myworkdayjobs.com/en-US/uniquebusinesssystems",
+      "logo": "",
+      "category": "Job Boards",
+      "tags": ["Workday", "Direct Portal", "Enterprise Software", "Global"],
+      "pricing": "100% Free",
+      "rating": 4.3,
+      "featured": false,
+      "badge": "Direct Portal",
+      "loginType": "Username Password",
+      "features": [
+        "Direct Workday ATS application",
+        "Enterprise software career tracks",
+        "Volaris Group subsidiary",
+        "Verified direct recruiter review"
       ]
     }
   ]

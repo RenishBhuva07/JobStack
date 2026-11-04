@@ -74,18 +74,27 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
       url: url.trim() || "https://example.com",
       logo: "",
       category: category,
-      tags:
-        parsedTags.length > 0 ? parsedTags : ["Remote", "Tech", "Verified"],
+      tags: parsedTags.length > 0 ? parsedTags : ["Remote", "Tech", "Verified"],
       pricing: pricing.trim() || "100% Free",
       rating: 4.8,
       featured: true,
       badge: "Community Suggestion",
+      loginType: "",
       features:
         features.filter((f) => f.trim().length > 0).length > 0
           ? features.filter((f) => f.trim().length > 0)
           : ["Verified platform", "Curated listings"],
     };
-  }, [name, tagline, description, url, category, parsedTags, pricing, features]);
+  }, [
+    name,
+    tagline,
+    description,
+    url,
+    category,
+    parsedTags,
+    pricing,
+    features,
+  ]);
 
   // Feature Bullet Handlers
   const handleAddFeature = () => {
@@ -114,10 +123,7 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
 
     if (!url.trim()) {
       newErrors.url = "Website URL is required.";
-    } else if (
-      !url.startsWith("http://") &&
-      !url.startsWith("https://")
-    ) {
+    } else if (!url.startsWith("http://") && !url.startsWith("https://")) {
       newErrors.url = "URL must begin with https:// or http://";
     }
 
@@ -196,7 +202,8 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
               Submit a <span className="gradient-text">New Platform</span>
             </h1>
             <span className="submit-page__stats-subtitle">
-              <strong>Community Curation</strong> &bull; <strong>100% Free</strong> Directory Listing
+              <strong>Community Curation</strong> &bull;{" "}
+              <strong>100% Free</strong> Directory Listing
             </span>
           </div>
         </div>
@@ -261,7 +268,11 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
           /* Form & Live Preview Layout */
           <div className="submit-page__layout">
             {/* Left: Input Form */}
-            <form className="submit-form-card" onSubmit={handleSubmit} noValidate>
+            <form
+              className="submit-form-card"
+              onSubmit={handleSubmit}
+              noValidate
+            >
               <h2 className="submit-form__section-title">
                 <Globe size={18} className="gradient-text" />
                 <span>Platform Details</span>
@@ -292,7 +303,9 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
                     />
                   </div>
                   {errors.name && (
-                    <span className="submit-form__error-msg">{errors.name}</span>
+                    <span className="submit-form__error-msg">
+                      {errors.name}
+                    </span>
                   )}
                 </div>
 
@@ -429,7 +442,8 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
                       value={pricing}
                       onChange={(e) => {
                         setPricing(e.target.value);
-                        if (errors.pricing) setErrors({ ...errors, pricing: "" });
+                        if (errors.pricing)
+                          setErrors({ ...errors, pricing: "" });
                       }}
                     />
                   </div>
@@ -593,4 +607,3 @@ export const SubmitToolPage: React.FC<SubmitToolPageProps> = ({
 };
 
 export default SubmitToolPage;
-

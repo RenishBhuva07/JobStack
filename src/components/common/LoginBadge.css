@@ -1,0 +1,92 @@
+.login-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 3.5px 8.5px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  user-select: none;
+  cursor: default;
+}
+
+.login-badge--md {
+  font-size: 12px;
+  padding: 5px 12px;
+  gap: 6.5px;
+}
+
+.login-badge-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Google Login Badge - Dark Mode */
+.login-badge--google {
+  background: rgba(66, 133, 244, 0.12);
+  border: 1px solid rgba(66, 133, 244, 0.32);
+  color: #93c5fd;
+  box-shadow: 0 1px 4px rgba(66, 133, 244, 0.1);
+}
+
+.login-badge--google:hover {
+  background: rgba(66, 133, 244, 0.18);
+  border-color: rgba(66, 133, 244, 0.5);
+}
+
+/* Username Password Badge - Dark Mode */
+.login-badge--credentials {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fcd34d;
+  box-shadow: 0 1px 4px rgba(245, 158, 11, 0.1);
+}
+
+.login-badge--credentials:hover {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.55);
+}
+
+/* Fallback Badge - Dark Mode */
+.login-badge--default {
+  background: rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #cbd5e1;
+}
+
+/* Light Mode Overrides */
+:root[data-theme="light"] .login-badge--google {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.08);
+}
+
+:root[data-theme="light"] .login-badge--google:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+:root[data-theme="light"] .login-badge--credentials {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+  box-shadow: 0 1px 3px rgba(217, 119, 6, 0.08);
+}
+
+:root[data-theme="light"] .login-badge--credentials:hover {
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+
+:root[data-theme="light"] .login-badge--default {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
