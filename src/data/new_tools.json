@@ -1164,28 +1164,35 @@
     {
       "id": "hirist",
       "name": "Hirist",
-      "aliases": [],
-      "tagline": "Tech jobs in India",
-      "description": "India-focused portal for technology and product roles, often recommended for experienced engineers.",
+      "aliases": ["hirist.tech", "Hirist.com"],
+      "tagline": "India's dedicated tech and IT job portal",
+      "description": "Niche Indian recruitment platform focused exclusively on tech stacks, software engineering, AI/ML, data science, and product roles at top startups, product firms, and MNCs.",
       "url": "https://www.hirist.tech",
       "logo": null,
       "category": "India Portals",
       "regions": ["India"],
-      "focus": ["Tech"],
-      "audience": ["Mid-career", "Senior"],
-      "tags": ["India", "Tech", "Experienced"],
+      "focus": ["Tech", "Engineering"],
+      "audience": ["Freshers", "Mid-career", "Senior"],
+      "tags": ["India", "Tech", "Software Engineering", "Startups"],
       "pricing": "Free for job seekers",
       "seekerCost": "free",
-      "loginType": [],
-      "badge": null,
+      "loginType": ["email-password"],
+      "badge": "Tech Focus",
       "featured": false,
-      "features": ["Tech-only listings", "Mid to senior roles", "Job alerts"],
+      "features": [
+        "Tech stack and skill-based matching",
+        "Curated openings across top startups, unicorns, and GCCs",
+        "In-app resume builder and recruiter job alerts"
+      ],
       "rating": null,
       "status": "active",
-      "lastVerified": null,
-      "confidence": "medium",
-      "sourceUrls": ["https://applycove.com/blog/best-job-portals-in-india/"],
-      "notes": "Added; URL not live-checked."
+      "lastVerified": "2026-11-05",
+      "confidence": "high",
+      "sourceUrls": [
+        "https://www.hirist.tech",
+        "https://applycove.com/blog/best-job-portals-in-india/"
+      ],
+      "notes": "Part of Info Edge (India) Ltd and Naukri Talent Cloud ecosystem."
     },
     {
       "id": "foundit",

@@ -50,6 +50,8 @@ const KNOWN_PORTAL_URLS: Record<string, string> = {
   glassdoor: "https://www.glassdoor.com",
   hiringcafe: "https://hiringcafe.com",
   instahyre: "https://www.instahyre.com",
+  hirist: "https://www.hirist.tech",
+  "hirist.tech": "https://www.hirist.tech",
   dice: "https://www.dice.com",
   timesjobs: "https://www.timesjobs.com",
   "unique business systems": "https://volarisgroup.wd3.myworkdayjobs.com",
